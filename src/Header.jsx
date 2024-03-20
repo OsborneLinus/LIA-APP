@@ -1,9 +1,12 @@
-import logo from './assets/Yrgo.png'
+import App from "./App";
+import logo from "./assets/Yrgo.png";
 
 export default function Header() {
-  return(
+  return (
     <div className="flex justify-end p-6">
-      <img src={logo} alt="Yrgo logo" />
+      <a href="/">
+        <img src={logo} alt="Yrgo logo" onClick={App} />
+      </a>
     </div>
   );
 }
