@@ -1,5 +1,6 @@
 import Hero from "./hero.jsx";
 import Header from "./Header.jsx";
+import Form from "./components/Form.jsx";
 import Login from "./services/login";
 import supabase from "./services/supabase";
 
@@ -8,6 +9,7 @@ export default function App() {
     <>
       <Header />
       <Hero />
+      <Form />
     </>
   );
 }
