@@ -8,10 +8,9 @@ import ConfirmationPage from "./components/Form/ConfirmationPage.jsx";
 export default function App() {
   return (
     <>
-      {/*       <Header />
+      <Header />
       <Hero />
-      <Form /> */}
-      <ConfirmationPage />
+      <Form />
     </>
   );
 }

@@ -1,6 +1,7 @@
 // src/App.js or any other component file
 import React, { useState } from "react";
 import supabase from "../services/supabase";
+import ConfirmationPage from "./Form/ConfirmationPage";
 
 function Form() {
   const [name, setName] = useState("");
@@ -9,6 +10,7 @@ function Form() {
   const [role, setRole] = useState([]);
   const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const positions = [0, 1, 2, 3, 4, 5, 6, 7];
 
   const handleRoleChange = (event) => {
@@ -37,20 +39,19 @@ function Form() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const { error } = await supabase
-      .from("companies")
-      .insert([
-        {
-          name,
-          contact,
-          url,
-          role: role.join(", "),
-          position,
-          tech: tech.join(", "),
-        },
-      ]);
+    const { error } = await supabase.from("companies").insert([
+      {
+        name,
+        contact,
+        url,
+        role: role.join(", "),
+        position,
+        tech: tech.join(", "),
+      },
+    ]);
     if (error) console.error("Error inserting data: ", error);
     else console.log("Data inserted successfully");
+    setIsSubmitted(true);
   };
 
   return (
@@ -164,6 +165,7 @@ function Form() {
         </div>
 
         <button type="submit">Send</button>
+        {isSubmitted && <ConfirmationPage setIsSubmitted={setIsSubmitted} />}
       </form>
     </div>
   );
