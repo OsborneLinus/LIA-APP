@@ -1,4 +1,4 @@
-import Hero from "./hero.jsx";
+import Hero from "./Kebab.jsx";
 import Header from "./Header.jsx";
 import Form from "./components/Form.jsx";
 import Login from "./services/login";
