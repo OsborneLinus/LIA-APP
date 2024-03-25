@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import supabase from "../../services/supabase";
 import { CheckBoxContainer } from "./CheckBoxContainer";
 import { TextInput } from "./TextInput";
+import { Button } from "./Button";
 function Form() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -96,7 +97,7 @@ function Form() {
             <label htmlFor="platser">
               Platser:
               <select
-                className=" bg-input-grey px-4"
+                className="border-none bg-input-grey py-0"
                 id="platser"
                 onChange={handlePositionChange}
               >
@@ -112,81 +113,93 @@ function Form() {
         <div className="flex flex-col gap-2">
           <span>VI TAR EMOT</span>
           <CheckBoxContainer>
-            <input
-              type="checkbox"
-              value="Webbutveckling"
-              id="webbutveckling"
-              onChange={handleRoleChange}
-            />
-            <label className="" htmlFor="webbutveckling">
-              Webbutvecklare
-            </label>
-            <input
-              type="checkbox"
-              value="Designer"
-              name="designer"
-              id="designer"
-              onChange={handleRoleChange}
-            />
-            <label htmlFor="designer">Digital Designer</label>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="Webbutveckling"
+                id="webbutveckling"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleRoleChange}
+              />
+              <label className="" htmlFor="webbutveckling">
+                Webbutvecklare
+              </label>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="Designer"
+                name="designer"
+                id="designer"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleRoleChange}
+              />
+              <label htmlFor="designer">Digital Designer</label>
+            </div>
           </CheckBoxContainer>
         </div>
         <div className="flex flex-col gap-2">
-          <span>ÖNSKADE KOMPETENSER</span>
+          <span>VI JOBBAR MED</span>
           <CheckBoxContainer>
             <div className="w-full flex justify-between">
-              <div>
+              <div className="flex gap-2">
                 <input
                   type="checkbox"
                   value="Frontend"
                   id="frontend-checkbox"
+                  className="rounded-none bg-input-grey w-6 h-6"
                   onChange={handleTechChange}
                 />
                 <label htmlFor="frontend-checkbox">Frontend</label>
               </div>
-              <div>
+              <div className="flex gap-2">
                 <input
                   type="checkbox"
                   value="UX"
                   id="ux-checkbox"
+                  className="rounded-none bg-input-grey w-6 h-6"
                   onChange={handleTechChange}
                 />
                 <label htmlFor="ux-checkbox">UX</label>
               </div>
-              <div>
+              <div className="flex gap-2">
                 <input
                   type="checkbox"
                   value="UI"
                   id="ui-checkbox"
+                  className="rounded-none bg-input-grey w-6 h-6"
                   onChange={handleTechChange}
                 />
                 <label htmlFor="ui-checkbox">UI</label>
               </div>
             </div>
             <div className="w-full flex justify-between">
-              <div>
+              <div className="flex gap-2">
                 <input
                   type="checkbox"
                   value="Backend"
                   id="backend-checkbox"
+                  className="rounded-none bg-input-grey w-6 h-6"
                   onChange={handleTechChange}
                 />
                 <label htmlFor="backend-checkbox">Backend</label>
               </div>
-              <div>
+              <div className="flex gap-2">
                 <input
                   type="checkbox"
                   value="Film"
                   id="film-checkbox"
+                  className="rounded-none bg-input-grey w-6 h-6"
                   onChange={handleTechChange}
                 />
                 <label htmlFor="film-checkbox">Film</label>
               </div>
-              <div>
+              <div className="flex gap-2">
                 <input
                   type="checkbox"
                   value="Motion"
                   id="motion-checkbox"
+                  className="rounded-none bg-input-grey w-6 h-6"
                   onChange={handleTechChange}
                 />
                 <label htmlFor="motion-checkbox">Motion</label>
@@ -194,8 +207,9 @@ function Form() {
             </div>
           </CheckBoxContainer>
         </div>
-
-        <button type="submit">Send</button>
+        <div className="flex justify-end">
+          <Button type="submit">ANMÄL</Button>
+        </div>
       </form>
     </div>
   );
