@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import supabase from "../../services/supabase";
 import { CheckBoxContainer } from "./CheckBoxContainer";
 import { TextInput } from "./TextInput";
-
 function Form() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -96,7 +95,11 @@ function Form() {
           <CheckBoxContainer>
             <label htmlFor="platser">
               Platser:
-              <select id="platser" onChange={handlePositionChange}>
+              <select
+                className=" bg-input-grey px-4"
+                id="platser"
+                onChange={handlePositionChange}
+              >
                 {positions.map((value) => (
                   <option value={value} key={value}>
                     {value} platser
@@ -115,7 +118,9 @@ function Form() {
               id="webbutveckling"
               onChange={handleRoleChange}
             />
-            <label htmlFor="webbutveckling">Webbutvecklare</label>
+            <label className="" htmlFor="webbutveckling">
+              Webbutvecklare
+            </label>
             <input
               type="checkbox"
               value="Designer"
@@ -129,48 +134,64 @@ function Form() {
         <div className="flex flex-col gap-2">
           <span>ÖNSKADE KOMPETENSER</span>
           <CheckBoxContainer>
-            <input
-              type="checkbox"
-              value="Frontend"
-              id="frontend-checkbox"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="frontend-checkbox">Frontend</label>
-            <input
-              type="checkbox"
-              value="UX"
-              id="ux-checkbox"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="ux-checkbox">UX</label>
-            <input
-              type="checkbox"
-              value="UI"
-              id="ui-checkbox"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="ui-checkbox">UI</label>
-            <input
-              type="checkbox"
-              value="Backend"
-              id="backend-checkbox"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="backend-checkbox">Backend</label>
-            <input
-              type="checkbox"
-              value="Film"
-              id="film-checkbox"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="film-checkbox">Film</label>
-            <input
-              type="checkbox"
-              value="Motion"
-              id="motion-checkbox"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="motion-checkbox">Motion</label>
+            <div className="w-full flex justify-between">
+              <div>
+                <input
+                  type="checkbox"
+                  value="Frontend"
+                  id="frontend-checkbox"
+                  onChange={handleTechChange}
+                />
+                <label htmlFor="frontend-checkbox">Frontend</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value="UX"
+                  id="ux-checkbox"
+                  onChange={handleTechChange}
+                />
+                <label htmlFor="ux-checkbox">UX</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value="UI"
+                  id="ui-checkbox"
+                  onChange={handleTechChange}
+                />
+                <label htmlFor="ui-checkbox">UI</label>
+              </div>
+            </div>
+            <div className="w-full flex justify-between">
+              <div>
+                <input
+                  type="checkbox"
+                  value="Backend"
+                  id="backend-checkbox"
+                  onChange={handleTechChange}
+                />
+                <label htmlFor="backend-checkbox">Backend</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value="Film"
+                  id="film-checkbox"
+                  onChange={handleTechChange}
+                />
+                <label htmlFor="film-checkbox">Film</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  value="Motion"
+                  id="motion-checkbox"
+                  onChange={handleTechChange}
+                />
+                <label htmlFor="motion-checkbox">Motion</label>
+              </div>
+            </div>
           </CheckBoxContainer>
         </div>
 
