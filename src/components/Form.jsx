@@ -4,16 +4,29 @@ import supabase from "../services/supabase";
 
 function Form() {
   const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [url, setUrl] = useState("");
   const [role, setRole] = useState([]);
+  const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("");
   const positions = [0, 1, 2, 3, 4, 5, 6, 7];
 
-  const handleCheckboxChange = (event) => {
+  const handleRoleChange = (event) => {
     if (event.target.checked) {
       setRole((prevRole) => [...prevRole, event.target.value]);
     } else {
       setRole((prevRole) =>
         prevRole.filter((value) => value !== event.target.value)
+      );
+    }
+  };
+
+  const handleTechChange = (event) => {
+    if (event.target.checked) {
+      setTech((prevTech) => [...prevTech, event.target.value]);
+    } else {
+      setTech((prevTech) =>
+        prevTech.filter((value) => value !== event.target.value)
       );
     }
   };
@@ -26,39 +39,53 @@ function Form() {
     event.preventDefault();
     const { error } = await supabase
       .from("companies")
-      .insert([{ name, role: role.join(", "), position }]);
+      .insert([
+        {
+          name,
+          contact,
+          url,
+          role: role.join(", "),
+          position,
+          tech: tech.join(", "),
+        },
+      ]);
     if (error) console.error("Error inserting data: ", error);
     else console.log("Data inserted successfully");
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col">
+      <form onSubmit={handleSubmit} className="flex flex-col p-6">
+        <label htmlFor="name-input">FÖRETAG</label>
         <input
+          id="name-input"
           className="text-black"
           type="text"
           value={name}
           onChange={(event) => setName(event.target.value)}
-          placeholder="Enter your name"
+          placeholder="Företagsnamn"
+          required
         />
-        <div>
-          <label htmlFor="webbutveckling">Webbutvecklare</label>
-          <input
-            type="checkbox"
-            value="Webbutveckling"
-            id="webbutveckling"
-            onChange={handleCheckboxChange}
-          />
-
-          <label htmlFor="designer">Designer</label>
-          <input
-            type="checkbox"
-            value="Designer"
-            name="designer"
-            id="designer"
-            onChange={handleCheckboxChange}
-          />
-        </div>
+        <label htmlFor="contact-input">KONTAKT</label>
+        <input
+          id="contact-input"
+          className="text-black"
+          type="email"
+          value={contact}
+          onChange={(event) => setContact(event.target.value)}
+          placeholder="namn@foretag.se"
+          required
+        />
+        <label htmlFor="url-input">WEBBSIDA</label>
+        <input
+          id="url-input"
+          className="text-black"
+          type="url"
+          value={url}
+          onChange={(event) => setUrl(event.target.value)}
+          placeholder="foretag.se"
+          required
+        />
         <div className="flex flex-col text-black">
           <label htmlFor="platser">
             Platser:
@@ -71,6 +98,71 @@ function Form() {
             </select>
           </label>
         </div>
+        <span>VI TAR EMOT</span>
+        <div>
+          <input
+            type="checkbox"
+            value="Webbutveckling"
+            id="webbutveckling"
+            onChange={handleRoleChange}
+          />
+          <label htmlFor="webbutveckling">Webbutvecklare</label>
+          <input
+            type="checkbox"
+            value="Designer"
+            name="designer"
+            id="designer"
+            onChange={handleRoleChange}
+          />
+          <label htmlFor="designer">Digital Designer</label>
+        </div>
+
+        <span>ÖNSKADE KOMPETENSER</span>
+        <div>
+          <input
+            type="checkbox"
+            value="Frontend"
+            id="frontend-checkbox"
+            onChange={handleTechChange}
+          />
+          <label htmlFor="frontend-checkbox">Frontend</label>
+          <input
+            type="checkbox"
+            value="UX"
+            id="ux-checkbox"
+            onChange={handleTechChange}
+          />
+          <label htmlFor="ux-checkbox">UX</label>
+          <input
+            type="checkbox"
+            value="UI"
+            id="ui-checkbox"
+            onChange={handleTechChange}
+          />
+          <label htmlFor="ui-checkbox">UI</label>
+          <input
+            type="checkbox"
+            value="Backend"
+            id="backend-checkbox"
+            onChange={handleTechChange}
+          />
+          <label htmlFor="backend-checkbox">Backend</label>
+          <input
+            type="checkbox"
+            value="Film"
+            id="film-checkbox"
+            onChange={handleTechChange}
+          />
+          <label htmlFor="film-checkbox">Film</label>
+          <input
+            type="checkbox"
+            value="Motion"
+            id="motion-checkbox"
+            onChange={handleTechChange}
+          />
+          <label htmlFor="motion-checkbox">Motion</label>
+        </div>
+
         <button type="submit">Send</button>
       </form>
     </div>
