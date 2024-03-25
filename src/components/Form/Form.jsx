@@ -1,6 +1,7 @@
 // src/App.js or any other component file
 import React, { useState } from "react";
 import supabase from "../../services/supabase";
+import ConfirmationPage from "./ConfirmationPage";
 import { CheckBoxContainer } from "./CheckBoxContainer";
 import { TextInput } from "./TextInput";
 import { Button } from "./Button";
@@ -11,6 +12,7 @@ function Form() {
   const [role, setRole] = useState([]);
   const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const positions = [0, 1, 2, 3, 4, 5, 6, 7];
 
   const handleRoleChange = (event) => {
@@ -51,6 +53,7 @@ function Form() {
     ]);
     if (error) console.error("Error inserting data: ", error);
     else console.log("Data inserted successfully");
+    setIsSubmitted(true);
   };
 
   return (
@@ -210,6 +213,7 @@ function Form() {
         <div className="flex justify-end">
           <Button type="submit">ANMÄL</Button>
         </div>
+        {isSubmitted && <ConfirmationPage setIsSubmitted={setIsSubmitted} />}
       </form>
     </div>
   );
