@@ -20,9 +20,11 @@ module.exports = {
         "gothenburg-grey": "#4f4f4f",
         "bananpiren-yellow": "#FCFA58;",
         "yrgo-red": "#F52A3B",
+        "input-grey": "#f2f2f2",
+        "asphalt-grey": "#333"
         "badboy-gray": "#BDBDBD",
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };
