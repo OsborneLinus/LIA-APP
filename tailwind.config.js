@@ -22,6 +22,7 @@ module.exports = {
         "yrgo-red": "#F52A3B",
         "input-grey": "#f2f2f2",
         "asphalt-grey": "#333"
+        "badboy-gray": "#BDBDBD",
       },
     },
   },
