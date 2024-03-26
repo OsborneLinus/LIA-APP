@@ -28,31 +28,49 @@ export default function ConfirmationPage({ setIsSubmitted }) {
             TACK FÖR ANMÄLAN <span className="font-semibold">VI SES!</span>
           </p>
         </div>
-        <div>
-          <div className="flex flex-col items-center py-10 px-10 bg-black text-badboy-gray text-xl">
-            <div className="flex gap-20 pb-10">
-              <div className="content-center">
-                <img className="mb-6" src="src/assets/EventNote.svg" alt="" />
-                <p>24</p>
-                <p>04</p>
-                <p>24</p>
+
+        <div className="w-full h-[235px] px-[52px] py-6 bg-black flex-col justify-start items-start gap-6 inline-flex">
+          <div className="pl-1 justify-start items-start gap-[88px] inline-flex">
+            <div className="w-6 h-6 relative">
+              <div className="w-6 h-6 left-0 top-0 absolute bg-zinc-300" />
+            </div>
+            <div className="w-6 h-6 relative">
+              <div className="w-6 h-6 left-0 top-0 absolute bg-zinc-300" />
+            </div>
+            <div className="w-6 h-6 relative">
+              <div className="w-6 h-6 left-0 top-0 absolute bg-zinc-300" />
+            </div>
+          </div>
+          <div className="flex-col justify-start items-end gap-2.5 flex">
+            <div className="justify-start items-start gap-10 inline-flex">
+              <div className="w-[58px] text-stone-300 text-2xl font-light font-['Inter'] leading-[33.60px]">
+                24
+                <br />
+                04
+                <br />
+                24
               </div>
-              <div>
-                <img className="mb-6" src="src/assets/Schedule.svg" alt="" />
-                <p>15:00</p>
-                <p>-</p>
-                <p>17:00</p>
+              <div className="text-center text-stone-300 text-2xl font-light font-['Inter'] leading-[33.60px]">
+                15.00
+                <br />-<br />
+                17.00
               </div>
-              <div>
-                <img className="mb-6" src="src/assets/LocationOn.svg" alt="" />
-                <p>VISUAL</p> <p>ARENA</p>
+              <div className="w-[88px] text-stone-300 text-2xl font-light font-['Inter'] leading-[33.60px]">
+                VISUAL <br />
+                <br />
+                ARENA
               </div>
             </div>
-            <div className="font-extralight text-sm w-full text-end">
-              <p>Lindholmspiren 3-5</p>
+            <div className="p-1 flex-col justify-start items-start gap-1 flex">
+              <div className="justify-center items-center gap-1 inline-flex">
+                <div className="w-36 text-white text-base font-extralight font-['Inter']">
+                  Lindholmspiren 3-5
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
         <div className="flex flex-grow justify-center items-center">
           <div className="py-10">
             <button className="bg-black text-white text-xl py-2 px-4">
