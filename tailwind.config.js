@@ -6,6 +6,10 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        // Define a custom grid layout
+        custom: "1fr 2fr", // 1/3 and 2/3 widths
+      },
       boxShadow: {
         "3xl": "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
       },
@@ -29,6 +33,7 @@ module.exports = {
         "input-grey": "#f2f2f2",
         "asphalt-grey": "#333",
         "badboy-gray": "#BDBDBD",
+        "button-blue": "#001A52",
       },
     },
   },
