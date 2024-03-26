@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+import plugin from "tailwindcss/plugin";
+const svgToDataUri = require("mini-svg-data-uri");
+
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -29,5 +32,25 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    plugin(({ addComponents }) => {
+      const arrowOps = {
+        "background-image": `url("${svgToDataUri(
+          `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <mask id="mask0_432_403" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+          <rect width="24" height="24" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_432_403)">
+          <path d="M12.0001 14.7019L6.69238 9.39422L7.40008 8.68652L12.0001 13.2865L16.6001 8.68652L17.3078 9.39422L12.0001 14.7019Z" fill="black"/>
+          </g>
+          </svg>`
+        )}")`,
+      };
+      addComponents({
+        select: arrowOps,
+        ".form-select": arrowOps,
+      });
+    }),
+  ],
 };
