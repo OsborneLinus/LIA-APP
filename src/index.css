@@ -5,6 +5,10 @@
 :root {
   background-color: #4f4f4f;
   color: white;
-  font-family: 'Inter';
+  font-family: "Inter";
   font-weight: 300;
+}
+
+input[type="checkbox"]:checked {
+  background-color: transparent !important;
 }
