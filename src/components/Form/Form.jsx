@@ -5,7 +5,7 @@ import ConfirmationPage from "./ConfirmationPage";
 import { CheckBoxContainer } from "./CheckBoxGrid";
 import { TextInput } from "./TextInput";
 import { Button } from "./Button";
-import CheboxChecked from "./CheckboxChecked";
+import CheckboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
 
@@ -129,7 +129,7 @@ function Form() {
               <label className="" htmlFor="webbutveckling">
                 Webbutveckling
               </label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
             <div className="flex gap-2 relative">
@@ -139,7 +139,7 @@ function Form() {
                 onChange={handleRoleChange}
               />
               <label htmlFor="designer">Digital Designer</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
           </CheckBoxContainer>
@@ -154,7 +154,7 @@ function Form() {
                 onChange={handleTechChange}
               />
               <label htmlFor="frontend-checkbox">Frontend</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
             <div className="flex gap-2 relative">
@@ -164,7 +164,7 @@ function Form() {
                 onChange={handleTechChange}
               />
               <label htmlFor="ux-checkbox">UX</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
             <div className="flex gap-2 relative">
@@ -174,7 +174,7 @@ function Form() {
                 onChange={handleTechChange}
               />
               <label htmlFor="ui-checkbox">UI</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
 
@@ -185,7 +185,7 @@ function Form() {
                 onChange={handleTechChange}
               />
               <label htmlFor="backend-checkbox">Backend</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
             <div className="flex gap-2 relative">
@@ -195,7 +195,7 @@ function Form() {
                 onChange={handleTechChange}
               />
               <label htmlFor="film-checkbox">Film</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
             <div className="flex gap-2 relative">
@@ -205,7 +205,7 @@ function Form() {
                 onChange={handleTechChange}
               />{" "}
               <label htmlFor="motion-checkbox">Motion</label>
-              <CheboxChecked />
+              <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
           </CheckBoxContainer>

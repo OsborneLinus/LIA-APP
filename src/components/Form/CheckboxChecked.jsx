@@ -1,4 +1,4 @@
-function CheboxChecked() {
+function CheckboxChecked() {
   return (
     <svg
       className="w-6 h-6 hidden peer-checked:block absolute pointer-events-none"
@@ -26,4 +26,4 @@ function CheboxChecked() {
   );
 }
 
-export default CheboxChecked;
+export default CheckboxChecked;
