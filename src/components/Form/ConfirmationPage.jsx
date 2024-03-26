@@ -10,7 +10,7 @@ export default function ConfirmationPage({ setIsSubmitted }) {
       onClick={() => setIsSubmitted(false)}
     >
       <div
-        className="bg-badboy-gray w-full h-full smd:max-w-sm md:max-h-sm shadow-lg relative overflow-auto"
+        className="bg-badboy-gray w-full h-full md:max-w-sm md:max-h-sm shadow-lg relative overflow-auto"
         onClick={stopPropagation}
       >
         <button
