@@ -4,7 +4,7 @@ import supabase from "../../services/supabase";
 import ConfirmationPage from "./ConfirmationPage";
 import { CheckBoxContainer } from "./CheckBoxGrid";
 import { TextInput } from "./TextInput";
-import { Button } from "./Button";
+import { Button } from "../Common/Button";
 import CheboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
@@ -138,7 +138,9 @@ function Form() {
                 value="Designer"
                 onChange={handleRoleChange}
               />
-              <label htmlFor="designer">Digital Designer</label>
+              <label className="whitespace-nowrap" htmlFor="designer">
+                Digital Designer
+              </label>
               <CheboxChecked />
               <CheckboxUnchecked />
             </div>
