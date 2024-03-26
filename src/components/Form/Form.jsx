@@ -5,6 +5,10 @@ import ConfirmationPage from "./ConfirmationPage";
 import { CheckBoxContainer } from "./CheckBoxGrid";
 import { TextInput } from "./TextInput";
 import { Button } from "./Button";
+import CheboxChecked from "./CheckboxChecked";
+import { CheckboxInput } from "./CheckboxInput";
+import CheckboxUnchecked from "./CheckboxUnchecked";
+
 function Form() {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -116,94 +120,93 @@ function Form() {
         <div className="flex flex-col gap-2">
           <span>VI TAR EMOT</span>
           <CheckBoxContainer rows="grid-rows-1" cols="grid-cols-2" gap="gap-4">
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="Webbutveckling"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="webbutveckling"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="Webbutveckling"
                 onChange={handleRoleChange}
               />
               <label className="" htmlFor="webbutveckling">
-                Webbutvecklare
+                Webbutveckling
               </label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="Designer"
-                name="designer"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="designer"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="Designer"
                 onChange={handleRoleChange}
               />
               <label htmlFor="designer">Digital Designer</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
           </CheckBoxContainer>
         </div>
         <div className="flex flex-col gap-2">
           <span>VI JOBBAR MED</span>
           <CheckBoxContainer rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="Frontend"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="frontend-checkbox"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="Frontend"
                 onChange={handleTechChange}
               />
               <label htmlFor="frontend-checkbox">Frontend</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="UX"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="ux-checkbox"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="UX"
                 onChange={handleTechChange}
               />
               <label htmlFor="ux-checkbox">UX</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="UI"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="ui-checkbox"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="UI"
                 onChange={handleTechChange}
               />
               <label htmlFor="ui-checkbox">UI</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
 
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="Backend"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="backend-checkbox"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="Backend"
                 onChange={handleTechChange}
               />
               <label htmlFor="backend-checkbox">Backend</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="Film"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="film-checkbox"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="Film"
                 onChange={handleTechChange}
               />
               <label htmlFor="film-checkbox">Film</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
-            <div className="flex gap-2">
-              <input
-                type="checkbox"
-                value="Motion"
+            <div className="flex gap-2 relative">
+              <CheckboxInput
                 id="motion-checkbox"
-                className="rounded-none bg-input-grey w-6 h-6"
+                value="Motion"
                 onChange={handleTechChange}
-              />
+              />{" "}
               <label htmlFor="motion-checkbox">Motion</label>
+              <CheboxChecked />
+              <CheckboxUnchecked />
             </div>
           </CheckBoxContainer>
         </div>
