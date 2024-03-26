@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import supabase from "../../services/supabase";
 import ConfirmationPage from "./ConfirmationPage";
-import { CheckBoxContainer } from "./CheckBoxContainer";
+import { CheckBoxContainer } from "./CheckBoxGrid";
 import { TextInput } from "./TextInput";
 import { Button } from "./Button";
 function Form() {
@@ -59,7 +59,7 @@ function Form() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col p-6 gap-6">
-        <div className="flex flex-col gap-2 shadow-3xl">
+        <div className="flex flex-col gap-2">
           <label htmlFor="name-input">FÖRETAG</label>
           <TextInput
             id="name-input"
@@ -70,7 +70,7 @@ function Form() {
             required
           />
         </div>
-        <div className="flex flex-col gap-2 shadow-3xl">
+        <div className="flex flex-col gap-2">
           <label htmlFor="contact-input">KONTAKT</label>
           <TextInput
             id="contact-input"
@@ -82,7 +82,7 @@ function Form() {
             required
           />
         </div>
-        <div className="flex flex-col gap-2 shadow-3xl">
+        <div className="flex flex-col gap-2">
           <label htmlFor="url-input">WEBBSIDA</label>
           <TextInput
             id="url-input"
@@ -94,7 +94,7 @@ function Form() {
             required
           />
         </div>
-        <div className="flex flex-col gap-2 shadow-3xl">
+        <div className="flex flex-col gap-2">
           <span>LIA</span>
           <CheckBoxContainer>
             <label htmlFor="platser">
@@ -115,7 +115,7 @@ function Form() {
         </div>
         <div className="flex flex-col gap-2">
           <span>VI TAR EMOT</span>
-          <CheckBoxContainer>
+          <CheckBoxContainer rows="grid-rows-1" cols="grid-cols-2" gap="gap-4">
             <div className="flex gap-2">
               <input
                 type="checkbox"
@@ -143,70 +143,67 @@ function Form() {
         </div>
         <div className="flex flex-col gap-2">
           <span>VI JOBBAR MED</span>
-          <CheckBoxContainer>
-            <div className="w-full flex justify-between">
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  value="Frontend"
-                  id="frontend-checkbox"
-                  className="rounded-none bg-input-grey w-6 h-6"
-                  onChange={handleTechChange}
-                />
-                <label htmlFor="frontend-checkbox">Frontend</label>
-              </div>
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  value="UX"
-                  id="ux-checkbox"
-                  className="rounded-none bg-input-grey w-6 h-6"
-                  onChange={handleTechChange}
-                />
-                <label htmlFor="ux-checkbox">UX</label>
-              </div>
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  value="UI"
-                  id="ui-checkbox"
-                  className="rounded-none bg-input-grey w-6 h-6"
-                  onChange={handleTechChange}
-                />
-                <label htmlFor="ui-checkbox">UI</label>
-              </div>
+          <CheckBoxContainer rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="Frontend"
+                id="frontend-checkbox"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleTechChange}
+              />
+              <label htmlFor="frontend-checkbox">Frontend</label>
             </div>
-            <div className="w-full flex justify-between">
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  value="Backend"
-                  id="backend-checkbox"
-                  className="rounded-none bg-input-grey w-6 h-6"
-                  onChange={handleTechChange}
-                />
-                <label htmlFor="backend-checkbox">Backend</label>
-              </div>
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  value="Film"
-                  id="film-checkbox"
-                  className="rounded-none bg-input-grey w-6 h-6"
-                  onChange={handleTechChange}
-                />
-                <label htmlFor="film-checkbox">Film</label>
-              </div>
-              <div className="flex gap-2">
-                <input
-                  type="checkbox"
-                  value="Motion"
-                  id="motion-checkbox"
-                  className="rounded-none bg-input-grey w-6 h-6"
-                  onChange={handleTechChange}
-                />
-                <label htmlFor="motion-checkbox">Motion</label>
-              </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="UX"
+                id="ux-checkbox"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleTechChange}
+              />
+              <label htmlFor="ux-checkbox">UX</label>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="UI"
+                id="ui-checkbox"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleTechChange}
+              />
+              <label htmlFor="ui-checkbox">UI</label>
+            </div>
+
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="Backend"
+                id="backend-checkbox"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleTechChange}
+              />
+              <label htmlFor="backend-checkbox">Backend</label>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="Film"
+                id="film-checkbox"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleTechChange}
+              />
+              <label htmlFor="film-checkbox">Film</label>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="checkbox"
+                value="Motion"
+                id="motion-checkbox"
+                className="rounded-none bg-input-grey w-6 h-6"
+                onChange={handleTechChange}
+              />
+              <label htmlFor="motion-checkbox">Motion</label>
             </div>
           </CheckBoxContainer>
         </div>
