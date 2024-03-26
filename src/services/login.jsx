@@ -24,7 +24,13 @@ export default function Login() {
     if (error) console.log("Error logging out: ", error.message);
   };
   if (!session) {
-    return <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />;
+    return (
+      <Auth
+        supabaseClient={supabase}
+        appearance={{ theme: ThemeSupa }}
+        providers={false}
+      />
+    );
   } else {
     return (
       <div>

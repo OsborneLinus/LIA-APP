@@ -11,6 +11,7 @@ export default function App() {
       <Header />
       <Hero />
       <Form />
+      <Login />
     </>
   );
 }
