@@ -12,8 +12,12 @@ export const LoginForm = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
-    const { error } = await supabase.auth.signIn({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
     if (error) console.error("Error logging in:", error.message);
+    else console.log("Data inserted successfully");
   };
 
   return (
