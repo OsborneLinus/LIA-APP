@@ -1,13 +1,13 @@
 // src/App.js or any other component file
 import React, { useState } from "react";
 import supabase from "../../services/supabase";
-import ConfirmationPage from "./ConfirmationPage";
+import { Button } from "../Common/Button";
 import { CheckBoxContainer } from "./CheckBoxGrid";
-import { TextInput } from "./TextInput";
-import { Button } from "./Button";
 import CheckboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
+import ConfirmationPage from "./ConfirmationPage";
+import { TextInput } from "./TextInput";
 
 function Form() {
   const [name, setName] = useState("");
@@ -138,7 +138,9 @@ function Form() {
                 value="Designer"
                 onChange={handleRoleChange}
               />
-              <label htmlFor="designer">Digital Designer</label>
+              <label className="whitespace-nowrap" htmlFor="designer">
+                Digital Designer
+              </label>
               <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
