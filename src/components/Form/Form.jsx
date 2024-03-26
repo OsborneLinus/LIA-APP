@@ -8,7 +8,6 @@ import { Button } from "./Button";
 import CheckboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
-import SaveTheDate from "../SaveTheDate";
 
 function Form() {
   const [name, setName] = useState("");
@@ -216,10 +215,6 @@ function Form() {
         </div>
         {isSubmitted && <ConfirmationPage setIsSubmitted={setIsSubmitted} />}
       </form>
-      <SaveTheDate>
-        Mingel mellan bransch och studerande Webbutvecklare och Digital
-        Designers på Yrgo
-      </SaveTheDate>
     </div>
   );
 }
