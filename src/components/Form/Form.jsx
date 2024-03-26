@@ -59,7 +59,7 @@ function Form() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="flex flex-col p-6 gap-6">
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 shadow-3xl">
           <label htmlFor="name-input">FÖRETAG</label>
           <TextInput
             id="name-input"
@@ -70,7 +70,7 @@ function Form() {
             required
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 shadow-3xl">
           <label htmlFor="contact-input">KONTAKT</label>
           <TextInput
             id="contact-input"
@@ -82,7 +82,7 @@ function Form() {
             required
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 shadow-3xl">
           <label htmlFor="url-input">WEBBSIDA</label>
           <TextInput
             id="url-input"
@@ -94,7 +94,7 @@ function Form() {
             required
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 shadow-3xl">
           <span>LIA</span>
           <CheckBoxContainer>
             <label htmlFor="platser">
