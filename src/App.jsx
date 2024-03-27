@@ -6,6 +6,7 @@ import ConfirmationPage from "./components/Form/ConfirmationPage.jsx";
 import { Card } from "./components/Cards/Card.jsx";
 import { CardContainer } from "./components/Cards/CardContainer.jsx";
 import { SignupForm } from "./services/SignUp.jsx";
+import { LoginForm } from "./services/login.jsx";
 
 const companies = [
   { id: 1, name: "Itiden" },
@@ -18,7 +19,6 @@ export default function App() {
       <Header />
       <Hero />
       <Form />
-      {/* <Login /> */}
       <CardContainer>
         {companies.map((company) => {
           return <Card key={company.id} companyName={company.name} />;

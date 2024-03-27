@@ -2,7 +2,7 @@ import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
 import logo from "../assets/YrgoRed.png";
 import App from "../App";
-import { Button } from "../components/Form/Button";
+import { Button } from "../components/Common/Button";
 
 import supabase from "./supabase";
 
