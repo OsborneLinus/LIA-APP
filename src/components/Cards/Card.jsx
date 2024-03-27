@@ -1,4 +1,4 @@
-import Heart from "../../assets/Heart";
+import FavoriteHeart from "../../assets/FavoriteHeart";
 import { Button } from "../Common/Button";
 
 export const Card = ({
@@ -8,14 +8,15 @@ export const Card = ({
   role,
   tech,
   contact,
+  companyId,
 }) => {
   const roles = role.length == 2 ? `${role[0]} & ${role[1]}` : role[0];
   return (
-    <div className="flex flex-col p-4 gap-6 bg-input-grey text-black shadow-3xl">
+    <div className="flex flex-col p-4 gap-6 bg-white text-black shadow rounded">
       <div className="flex flex-col gap-4">
         <div className="flex justify-between">
           <h2 className="text-2xl">{companyName}</h2>
-          <Heart />
+          <FavoriteHeart companyId={companyId} />
         </div>
         <div className="flex justify-between">
           <p>{positions} LIA platser</p>

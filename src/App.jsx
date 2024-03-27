@@ -31,11 +31,14 @@ export default function App() {
       <Header />
       <Hero />
       <Form />
+      {/* <LoginForm />
+      <SignupForm /> */}
       <CardContainer>
         {companies.map((company) => {
           return (
             <Card
               key={company.id}
+              companyId={company.id}
               companyName={company.name}
               positions={company.position}
               role={company.role}
