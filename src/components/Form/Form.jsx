@@ -17,7 +17,7 @@ function Form() {
   const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const positions = [0, 1, 2, 3, 4, 5, 6, 7];
+  const positions = ["1-2", "3-4", "5-6", "Vet ej"];
 
   const handleRoleChange = (event) => {
     if (event.target.checked) {
@@ -50,9 +50,11 @@ function Form() {
         name,
         contact,
         url,
-        role: role.join(", "),
+        // role: role.join(", "),
+        role,
         position,
-        tech: tech.join(", "),
+        tech,
+        // tech: tech.join(", "),
       },
     ]);
     if (error) console.error("Error inserting data: ", error);
@@ -102,7 +104,7 @@ function Form() {
           <span>LIA</span>
           <CheckBoxContainer>
             <label htmlFor="platser">
-              Platser:
+              Antal platser:
               <select
                 className="border-none bg-input-grey py-0"
                 id="platser"
@@ -110,7 +112,7 @@ function Form() {
               >
                 {positions.map((value) => (
                   <option value={value} key={value}>
-                    {value} platser
+                    {value}
                   </option>
                 ))}
               </select>
@@ -123,7 +125,7 @@ function Form() {
             <div className="flex gap-2 relative">
               <CheckboxInput
                 id="webbutveckling"
-                value="Webbutveckling"
+                value="WU"
                 onChange={handleRoleChange}
               />
               <label className="" htmlFor="webbutveckling">
@@ -135,7 +137,7 @@ function Form() {
             <div className="flex gap-2 relative">
               <CheckboxInput
                 id="designer"
-                value="Designer"
+                value="DD"
                 onChange={handleRoleChange}
               />
               <label className="whitespace-nowrap" htmlFor="designer">
