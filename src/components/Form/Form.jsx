@@ -106,7 +106,7 @@ function Form() {
             <label htmlFor="platser">
               Antal platser:
               <select
-                className="border-none bg-input-grey py-0"
+                className="border-none bg-cloud-grey py-0"
                 id="platser"
                 onChange={handlePositionChange}
               >
