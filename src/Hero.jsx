@@ -4,7 +4,8 @@ import SaveTheDate from "./components/SaveTheDate.jsx";
 export default function Hero() {
   return (
     <>
-      <div className="hero">
+      {/* <div className="h-[80vh]"> */}
+      <div>
         <h1 className="text-5xl font-extralight font p-6">
           KOM OCH <b className="font-bold">MÖT FRAMTIDENS</b> DIGITALA{" "}
           <b className="font-bold">DESIGNERS OCH UTVECKLARE</b>
@@ -14,7 +15,7 @@ export default function Hero() {
         </div>
         <SaveTheDate>
           Mingel mellan bransch och studerande Webbutvecklare och Digital
-          Designers på Yrgo
+          Designers på Yrgo.
         </SaveTheDate>
       </div>
     </>
