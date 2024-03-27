@@ -17,7 +17,7 @@ function Form() {
   const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const positions = [0, 1, 2, 3, 4, 5, 6, 7];
+  const positions = ["1-2", "3-4", "5-6", "Vet ej"];
 
   const handleRoleChange = (event) => {
     if (event.target.checked) {
@@ -102,7 +102,7 @@ function Form() {
           <span>LIA</span>
           <CheckBoxContainer>
             <label htmlFor="platser">
-              Platser:
+              Antal platser:
               <select
                 className="border-none bg-input-grey py-0"
                 id="platser"
@@ -110,7 +110,7 @@ function Form() {
               >
                 {positions.map((value) => (
                   <option value={value} key={value}>
-                    {value} platser
+                    {value}
                   </option>
                 ))}
               </select>
