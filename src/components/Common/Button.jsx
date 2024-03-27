@@ -4,7 +4,7 @@ export const Button = ({ children, type, size }) => {
   return (
     <button
       type={type}
-      className={`bg-asphalt-grey text-white rounded flex justify-center items-center w-fit ${sizeClassNames}`}
+      className={`bg-night-sky-blue text-white rounded flex justify-center items-center w-fit ${sizeClassNames}`}
     >
       {children}
     </button>

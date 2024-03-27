@@ -1,3 +1,4 @@
+import Heart from "../../assets/Heart";
 import { Button } from "../Common/Button";
 
 export const Card = ({
@@ -12,8 +13,9 @@ export const Card = ({
   return (
     <div className="flex flex-col p-4 gap-6 bg-input-grey text-black shadow-3xl">
       <div className="flex flex-col gap-4">
-        <div>
+        <div className="flex justify-between">
           <h2 className="text-2xl">{companyName}</h2>
+          <Heart />
         </div>
         <div className="flex justify-between">
           <p>{positions} LIA platser</p>
