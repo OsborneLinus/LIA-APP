@@ -50,9 +50,11 @@ function Form() {
         name,
         contact,
         url,
-        role: role.join(", "),
+        // role: role.join(", "),
+        role,
         position,
-        tech: tech.join(", "),
+        tech,
+        // tech: tech.join(", "),
       },
     ]);
     if (error) console.error("Error inserting data: ", error);
@@ -123,7 +125,7 @@ function Form() {
             <div className="flex gap-2 relative">
               <CheckboxInput
                 id="webbutveckling"
-                value="Webbutveckling"
+                value="WU"
                 onChange={handleRoleChange}
               />
               <label className="" htmlFor="webbutveckling">
@@ -135,7 +137,7 @@ function Form() {
             <div className="flex gap-2 relative">
               <CheckboxInput
                 id="designer"
-                value="Designer"
+                value="DD"
                 onChange={handleRoleChange}
               />
               <label className="whitespace-nowrap" htmlFor="designer">
