@@ -1,6 +1,6 @@
 export default function AnimationHeartSkull() {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 p-8">
       <div className="flex flex-col">
         <p>DD</p> <p className="text-center">+</p> <p>WU </p>
       </div>
