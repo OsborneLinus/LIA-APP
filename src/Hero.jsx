@@ -1,15 +1,29 @@
 import YrgoArrowButton from "./components/Common/YrgoArrowButton.jsx";
 import SaveTheDate from "./components/SaveTheDate.jsx";
 
-export default function Hero() {
+export default function Hero(view) {
+  const defaultText = (
+    <h1 className="text-5xl font-extralight font p-6">
+      KOM OCH <b className="font-bold">MÖT FRAMTIDENS</b> DIGITALA
+      <br />
+      <b className="font-bold">DESIGNERS OCH UTVECKLARE</b>
+    </h1>
+  );
+
+  const studentText = (
+    <h1 className="text-5xl font-extralight font p-6">
+      KOM OCH <b className="font-bold">MÖT DIN</b> FRAMTIDA
+      <br />
+      <b className="font-bold">LIA-PLATS</b>
+    </h1>
+  );
+
+  const heroText = view.view === "student" ? studentText : defaultText;
+
   return (
     <>
-      {/* <div className="h-[80vh]"> */}
       <div>
-        <h1 className="text-5xl font-extralight font p-6">
-          KOM OCH <b className="font-bold">MÖT FRAMTIDENS</b> DIGITALA{" "}
-          <b className="font-bold">DESIGNERS OCH UTVECKLARE</b>
-        </h1>
+        {heroText}
         <div className="flex justify-end mt-12 mb-6 p-6">
           <YrgoArrowButton />
         </div>
