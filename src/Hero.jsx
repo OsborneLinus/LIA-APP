@@ -15,7 +15,7 @@ export default function Hero() {
         </div>
         <SaveTheDate>
           Mingel mellan bransch och studerande Webbutvecklare och Digital
-          Designers på Yrgo
+          Designers på Yrgo.
         </SaveTheDate>
       </div>
     </>
