@@ -10,11 +10,6 @@ import { SignupForm } from "./services/SignUp.jsx";
 import { LoginForm } from "./services/login.jsx";
 import Footer from "./Footer.jsx";
 
-// const companies = [
-//   { id: 1, name: "Itiden" },
-//   { id: 2, name: "Raket" },
-// ];
-
 export default function App() {
   const [companies, setCompanies] = useState([]);
 
@@ -30,7 +25,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <Hero view="company" />
       <Form />
       {/* <LoginForm />
       <SignupForm /> */}
