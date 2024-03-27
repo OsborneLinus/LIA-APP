@@ -15,27 +15,21 @@ export const Card = ({
           <h2 className="text-2xl">{companyName}</h2>
         </div>
         <div className="flex justify-between">
-          <p>2-3 LIA platser</p>
+          <p>{positions} LIA platser</p>
           <span>|</span>
           <p>Nov 2024</p>
           <span>|</span>
-          <p>DD & WU</p>
+          <p>{role}</p>
         </div>
       </div>
       <div className="flex justify-between gap-2">
         <div className="flex items-center flex-wrap gap-4">
           <div className="border solid border-black leading-snug px-1 py-[2px]">
-            Frontend
-          </div>
-          <div className="border solid border-black leading-snug px-1 py-[2px]">
-            Backend
-          </div>
-          <div className="border solid border-black leading-snug px-1 py-[2px]">
-            UI
+            {tech}
           </div>
         </div>
         <div className="self-end">
-          <Button size="small">KONTAKT</Button>
+          <Button size="small">{contact}</Button>
         </div>
       </div>
     </div>
