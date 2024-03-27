@@ -8,6 +8,7 @@ import { Card } from "./components/Cards/Card.jsx";
 import { CardContainer } from "./components/Cards/CardContainer.jsx";
 import { SignupForm } from "./services/SignUp.jsx";
 import { LoginForm } from "./services/login.jsx";
+import Footer from "./Footer.jsx";
 
 // const companies = [
 //   { id: 1, name: "Itiden" },
@@ -45,6 +46,7 @@ export default function App() {
           );
         })}
       </CardContainer>
+      <Footer />
     </>
   );
 }
