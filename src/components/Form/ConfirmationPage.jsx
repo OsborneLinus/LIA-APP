@@ -30,29 +30,17 @@ export default function ConfirmationPage({ setIsSubmitted }) {
             <div className="w-6 h-6 relative">
               <div className="w-6 h-6 left-0 top-0 absolute ">
                 {" "}
-                <img
-                  className="mb-6"
-                  src="/public/assets/EventNoteRed.svg"
-                  alt=""
-                />
+                <img className="mb-6" src="/assets/EventNoteRed.svg" alt="" />
               </div>
             </div>
             <div className="w-6 h-6 relative">
               <div className="w-6 h-6 left-0 top-0 absolute">
-                <img
-                  className="mb-6"
-                  src="/public/assets/ScheduleRed.svg"
-                  alt=""
-                />
+                <img className="mb-6" src="/assets/ScheduleRed.svg" alt="" />
               </div>
             </div>
             <div className="w-6 h-6 relative">
               <div className="w-6 h-6 left-0 top-0 absolute">
-                <img
-                  className="mb-6"
-                  src="../public/assets/LocationRed.svg"
-                  alt=""
-                />
+                <img className="mb-6" src="/assets/LocationRed.svg" alt="" />
               </div>
             </div>
           </div>

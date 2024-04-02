@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CheckBoxGrid } from "../Form/CheckBoxGrid";
 import { CheckboxInput } from "../Form/CheckboxInput";
-import CheckboxChecked from "../../assets/CheckboxChecked";
+import CheckboxChecked from "../../../public/assets/CheckboxChecked";
 import CheckboxUnchecked from "../Form/CheckboxUnchecked";
 
 export const FilterDropdown = () => {
