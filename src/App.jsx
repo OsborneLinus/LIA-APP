@@ -9,6 +9,8 @@ import { CardContainer } from "./components/Cards/CardContainer.jsx";
 import { SignupForm } from "./services/SignUp.jsx";
 import { LoginForm } from "./services/login.jsx";
 import Footer from "./Footer.jsx";
+import What from "./components/Common/What.jsx";
+import Who from "./components/Common/Who.jsx";
 import { Button } from "./components/Common/Button.jsx";
 
 export default function App() {
@@ -51,6 +53,8 @@ export default function App() {
     <>
       <Header />
       <Hero session={session} />
+      <What />
+      <Who />
       {isLoggedIn ? (
         <CardContainer>
           <Button
