@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { CheckBoxGrid } from "../Form/CheckBoxGrid";
 import { CheckboxInput } from "../Form/CheckboxInput";
 import CheckboxChecked from "../Form/CheckboxChecked";
 import CheckboxUnchecked from "../Form/CheckboxUnchecked";
 
-export const FilterDropdown = () => {
+export const FilterDropdown = ({ filter, setFilter }) => {
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleDropdown = () => {
     setShowFilters(!showFilters);
   };
 
-  const handleTechChange = (event) => {
+  const handleFilterChange = (event) => {
     if (event.target.checked) {
-      setTech((prevTech) => [...prevTech, event.target.value]);
+      setFilter([...filter, event.target.value]);
     } else {
-      setTech((prevTech) =>
-        prevTech.filter((value) => value !== event.target.value)
-      );
+      const updatedFilter = filter.filter((checkedFilter) => {
+        return checkedFilter !== event.target.value;
+      });
+      setFilter(updatedFilter);
     }
   };
 
@@ -46,12 +46,32 @@ export const FilterDropdown = () => {
         </button>
       </div>
       {showFilters && (
-        <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
+        <div className="flex flex-wrap gap-4 py-2 px-4">
+          <div className="flex gap-2 relative">
+            <CheckboxInput
+              id="webbutveckling-checkbox"
+              value="WU"
+              onChange={handleFilterChange}
+            />
+            <label htmlFor="webbtveckling-checkbox">Webbutveckling</label>
+            <CheckboxChecked />
+            <CheckboxUnchecked />
+          </div>
+          <div className="flex gap-2 relative">
+            <CheckboxInput
+              id="design-checkbox"
+              value="DD"
+              onChange={handleFilterChange}
+            />
+            <label htmlFor="design-checkbox">Digital design</label>
+            <CheckboxChecked />
+            <CheckboxUnchecked />
+          </div>
           <div className="flex gap-2 relative">
             <CheckboxInput
               id="frontend-checkbox"
               value="Frontend"
-              onChange={handleTechChange}
+              onChange={handleFilterChange}
             />
             <label htmlFor="frontend-checkbox">Frontend</label>
             <CheckboxChecked />
@@ -61,7 +81,7 @@ export const FilterDropdown = () => {
             <CheckboxInput
               id="ux-checkbox"
               value="UX"
-              onChange={handleTechChange}
+              onChange={handleFilterChange}
             />
             <label htmlFor="ux-checkbox">UX</label>
             <CheckboxChecked />
@@ -71,7 +91,7 @@ export const FilterDropdown = () => {
             <CheckboxInput
               id="ui-checkbox"
               value="UI"
-              onChange={handleTechChange}
+              onChange={handleFilterChange}
             />
             <label htmlFor="ui-checkbox">UI</label>
             <CheckboxChecked />
@@ -82,7 +102,7 @@ export const FilterDropdown = () => {
             <CheckboxInput
               id="backend-checkbox"
               value="Backend"
-              onChange={handleTechChange}
+              onChange={handleFilterChange}
             />
             <label htmlFor="backend-checkbox">Backend</label>
             <CheckboxChecked />
@@ -92,7 +112,7 @@ export const FilterDropdown = () => {
             <CheckboxInput
               id="film-checkbox"
               value="Film"
-              onChange={handleTechChange}
+              onChange={handleFilterChange}
             />
             <label htmlFor="film-checkbox">Film</label>
             <CheckboxChecked />
@@ -102,13 +122,13 @@ export const FilterDropdown = () => {
             <CheckboxInput
               id="motion-checkbox"
               value="Motion"
-              onChange={handleTechChange}
+              onChange={handleFilterChange}
             />{" "}
             <label htmlFor="motion-checkbox">Motion</label>
             <CheckboxChecked />
             <CheckboxUnchecked />
           </div>
-        </CheckBoxGrid>
+        </div>
       )}
     </div>
   );
