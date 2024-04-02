@@ -1,7 +1,10 @@
+import { SignupForm } from "../../services/SignUp";
 import { Button } from "./Button";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Who() {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [isCompany, setIsCompany] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
@@ -21,11 +24,11 @@ function Who() {
   };
 
   const handleCreateAccount = () => {
-    console.log("I want to create an account!");
+    navigate("/signup");
   };
 
   const handleLogin = () => {
-    console.log("I want to log in!");
+    navigate("/login");
   };
 
   return (

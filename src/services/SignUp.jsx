@@ -5,8 +5,10 @@ import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "../services/supabase";
 import CheckedSVG from "../../public/assets/check.svg?react";
+import { useNavigate } from "react-router-dom";
 
 export const SignupForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +21,11 @@ export const SignupForm = () => {
   const handleSignUp = async (event) => {
     event.preventDefault();
     const { error } = await supabase.auth.signUp({ email, password });
-    if (error) console.error("Error signing up:", error.message);
+    if (error) {
+      console.error("Error signing up:", error.message);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
