@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import supabase from "../../services/supabase";
 import { Button } from "../Common/Button";
 import { CheckBoxGrid } from "./CheckBoxGrid";
-import CheckboxChecked from "../../assets/CheckboxChecked";
+import CheckboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
 import ConfirmationPage from "./ConfirmationPage";
 import { TextInput } from "./TextInput";
 
-function Form() {
+function Form({}) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [url, setUrl] = useState("");
@@ -101,9 +101,9 @@ function Form() {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <span>LIA</span>
+          <span className="px-4">LIA</span>
           <CheckBoxGrid>
-            <label htmlFor="platser">
+            <label htmlFor="platser" className="px-0">
               Antal platser:
               <select
                 className="border-none py-0"
@@ -120,7 +120,7 @@ function Form() {
           </CheckBoxGrid>
         </div>
         <div className="flex flex-col gap-2">
-          <span>VI TAR EMOT</span>
+          <span className="px-4">VI TAR EMOT</span>
           <CheckBoxGrid rows="grid-rows-1" cols="grid-cols-2" gap="gap-4">
             <div className="flex gap-2 relative">
               <CheckboxInput
@@ -149,7 +149,7 @@ function Form() {
           </CheckBoxGrid>
         </div>
         <div className="flex flex-col gap-2">
-          <span>VI JOBBAR MED</span>
+          <span className="px-4">VI JOBBAR MED</span>
           <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
             <div className="flex gap-2 relative">
               <CheckboxInput

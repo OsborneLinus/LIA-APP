@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "../assets/YrgoRed.png";
+import logo from "/assets/YrgoRed.png";
 import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "../services/supabase";
-import CheckedSVG from "../assets/check.svg?react";
+import CheckedSVG from "../../public/assets/check.svg?react";
+import { useNavigate } from "react-router-dom";
 
 export const SignupForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,7 +21,11 @@ export const SignupForm = () => {
   const handleSignUp = async (event) => {
     event.preventDefault();
     const { error } = await supabase.auth.signUp({ email, password });
-    if (error) console.error("Error signing up:", error.message);
+    if (error) {
+      console.error("Error signing up:", error.message);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -33,9 +39,18 @@ export const SignupForm = () => {
         <div className="text-zinc-800 text-5xl font-bold leading-[57px]">
           SKAPA KONTO
         </div>
-        <div className="w-[347px] text-base font-normal leading-snug">
+        <div className=" text-base font-normal leading-snug">
           Som student kan du skapa ett konto för att ta del av vilka företag som
           kommer vara på plats under minglet och deras kontaktinformation.{" "}
+        </div>
+        <div className="inline-flex text-base font-normal">
+          Har du redan ett konto?
+          <button
+            className="underline ml-2 text-base font-normal"
+            onClick={() => navigate("/login")}
+          >
+            Logga in här!
+          </button>
         </div>
       </div>
       <form className="flex flex-col gap-2" onSubmit={handleSignUp}>

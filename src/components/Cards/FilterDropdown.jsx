@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckboxInput } from "../Form/CheckboxInput";
-import CheckboxChecked from "../../assets/CheckboxChecked";
+import CheckboxChecked from "../Form/CheckboxChecked";
 import CheckboxUnchecked from "../Form/CheckboxUnchecked";
 
 export const FilterDropdown = ({ filter, setFilter }) => {

@@ -16,7 +16,7 @@ export default function ConfirmationPage({ setIsSubmitted }) {
         <div className="flex justify-between">
           <AnimationHeartSkull />
           <button className="p-8" onClick={() => setIsSubmitted(false)}>
-            <img src="src/assets/Yrgo-X.svg" />
+            <img src="/assets/YrgoX.svg" alt="" />
           </button>
         </div>
         <div className="pt-10 pb-10 pl-6">
@@ -30,21 +30,17 @@ export default function ConfirmationPage({ setIsSubmitted }) {
             <div className="w-6 h-6 relative">
               <div className="w-6 h-6 left-0 top-0 absolute ">
                 {" "}
-                <img
-                  className="mb-6"
-                  src="src/assets/EventNoteRed.svg"
-                  alt=""
-                />
+                <img className="mb-6" src="/assets/EventNoteRed.svg" alt="" />
               </div>
             </div>
             <div className="w-6 h-6 relative">
               <div className="w-6 h-6 left-0 top-0 absolute">
-                <img className="mb-6" src="src/assets/ScheduleRed.svg" alt="" />
+                <img className="mb-6" src="/assets/ScheduleRed.svg" alt="" />
               </div>
             </div>
             <div className="w-6 h-6 relative">
               <div className="w-6 h-6 left-0 top-0 absolute">
-                <img className="mb-6" src="src/assets/LocationRed.svg" alt="" />
+                <img className="mb-6" src="/assets/LocationRed.svg" alt="" />
               </div>
             </div>
           </div>

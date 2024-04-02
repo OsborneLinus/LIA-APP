@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "../assets/YrgoRed.png";
+import logo from "/assets/YrgoRed.png";
 import App from "../App";
 import { Button } from "../components/Common/Button";
-
 import supabase from "./supabase";
+import { useNavigate } from "react-router-dom";
 
-export const LoginForm = () => {
+export const LoginForm = ({ session }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,8 +17,11 @@ export const LoginForm = () => {
       email,
       password,
     });
-    if (error) console.error("Error logging in:", error.message);
-    else console.log("Data inserted successfully");
+    if (error) {
+      console.error("Error logging in:", error.message);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -28,10 +32,13 @@ export const LoginForm = () => {
         </a>
       </div>
       <form className="flex flex-col gap-2" onSubmit={handleLogin}>
-        <div className="p-4">
+        <div className="p-4 text-base font-normal">
           <h1 className="text-5xl font-bold ">LOGGA IN</h1>
           <p className="inline-flex">Har du inte ett konto?</p>
-          <button className="underline p-2" href="">
+          <button
+            className="underline p-2 "
+            onClick={() => navigate("/signup")}
+          >
             Skapa ett här!
           </button>
         </div>
