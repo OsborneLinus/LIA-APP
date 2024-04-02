@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "../assets/YrgoRed.png";
+import logo from "../../public/assets/YrgoRed.png";
 import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "../services/supabase";
-import CheckedSVG from "../assets/check.svg?react";
+import CheckedSVG from "../../public/assets/check.svg?react";
 
 export const SignupForm = () => {
   const [email, setEmail] = useState("");
