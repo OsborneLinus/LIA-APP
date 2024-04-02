@@ -1,4 +1,4 @@
-import YrgoArrowButton from "./components/YrgoArrowButton.jsx";
+import YrgoArrowButton from "./components/Common/YrgoArrowButton.jsx";
 import SaveTheDate from "./components/SaveTheDate.jsx";
 
 export default function Hero() {
