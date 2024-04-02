@@ -25,7 +25,7 @@ function AppRoutes() {
             <Header />
             <Hero session={session} />
             <What />
-            <Who />
+
             {isLoggedIn ? (
               <CardContainer>
                 <Button
@@ -53,7 +53,10 @@ function AppRoutes() {
                 })}
               </CardContainer>
             ) : (
-              <Form />
+              <>
+                <Who />
+                <Form />
+              </>
             )}
             <Footer />
           </>
