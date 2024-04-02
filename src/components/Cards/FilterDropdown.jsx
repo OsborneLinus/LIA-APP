@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { CheckBoxGrid } from "../Form/CheckBoxGrid";
 import { CheckboxInput } from "../Form/CheckboxInput";
 import CheckboxChecked from "../../assets/CheckboxChecked";
 import CheckboxUnchecked from "../Form/CheckboxUnchecked";
 
 export const FilterDropdown = () => {
   const [showFilters, setShowFilters] = useState(false);
+  const [tech, setTech] = useState([]);
+  const [filter, setFilter] = useState("");
 
   const toggleDropdown = () => {
     setShowFilters(!showFilters);
@@ -46,7 +47,27 @@ export const FilterDropdown = () => {
         </button>
       </div>
       {showFilters && (
-        <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
+        <div className="flex flex-wrap gap-4 py-2 px-4">
+          <div className="flex gap-2 relative">
+            <CheckboxInput
+              id="webbutveckling-checkbox"
+              value="Webbutveckling"
+              onChange={handleTechChange}
+            />
+            <label htmlFor="webbtveckling-checkbox">Webbutveckling</label>
+            <CheckboxChecked />
+            <CheckboxUnchecked />
+          </div>
+          <div className="flex gap-2 relative">
+            <CheckboxInput
+              id="design-checkbox"
+              value="Design"
+              onChange={handleTechChange}
+            />
+            <label htmlFor="design-checkbox">Digital design</label>
+            <CheckboxChecked />
+            <CheckboxUnchecked />
+          </div>
           <div className="flex gap-2 relative">
             <CheckboxInput
               id="frontend-checkbox"
@@ -108,7 +129,7 @@ export const FilterDropdown = () => {
             <CheckboxChecked />
             <CheckboxUnchecked />
           </div>
-        </CheckBoxGrid>
+        </div>
       )}
     </div>
   );
