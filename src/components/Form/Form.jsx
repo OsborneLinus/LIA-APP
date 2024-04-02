@@ -9,7 +9,7 @@ import CheckboxUnchecked from "./CheckboxUnchecked";
 import ConfirmationPage from "./ConfirmationPage";
 import { TextInput } from "./TextInput";
 
-function Form() {
+function Form({}) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [url, setUrl] = useState("");

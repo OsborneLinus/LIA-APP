@@ -1,7 +1,9 @@
 import YrgoArrowButton from "./components/Common/YrgoArrowButton.jsx";
 import SaveTheDate from "./components/SaveTheDate.jsx";
 
-export default function Hero({ view }) {
+export default function Hero({ session }) {
+  const isLoggedIn = session && session.user !== null;
+
   const defaultText = (
     <>
       KOM OCH <b className="font-bold">MÖT FRAMTIDENS</b> DIGITALA
@@ -17,8 +19,7 @@ export default function Hero({ view }) {
       <b className="font-bold">LIA-PLATS</b>
     </>
   );
-
-  const heroText = view === "student" ? studentText : defaultText;
+  const heroText = isLoggedIn ? studentText : defaultText;
 
   return (
     <>
