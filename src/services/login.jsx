@@ -32,10 +32,13 @@ export const LoginForm = ({ session }) => {
         </a>
       </div>
       <form className="flex flex-col gap-2" onSubmit={handleLogin}>
-        <div className="p-4">
+        <div className="p-4 text-base font-normal">
           <h1 className="text-5xl font-bold ">LOGGA IN</h1>
           <p className="inline-flex">Har du inte ett konto?</p>
-          <button className="underline p-2" href="">
+          <button
+            className="underline p-2 "
+            onClick={() => navigate("/signup")}
+          >
             Skapa ett här!
           </button>
         </div>

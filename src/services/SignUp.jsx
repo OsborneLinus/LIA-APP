@@ -39,9 +39,18 @@ export const SignupForm = () => {
         <div className="text-zinc-800 text-5xl font-bold leading-[57px]">
           SKAPA KONTO
         </div>
-        <div className="w-[347px] text-base font-normal leading-snug">
+        <div className=" text-base font-normal leading-snug">
           Som student kan du skapa ett konto för att ta del av vilka företag som
           kommer vara på plats under minglet och deras kontaktinformation.{" "}
+        </div>
+        <div className="inline-flex text-base font-normal">
+          Har du redan ett konto?
+          <button
+            className="underline ml-2 text-base font-normal"
+            onClick={() => navigate("/login")}
+          >
+            Logga in här!
+          </button>
         </div>
       </div>
       <form className="flex flex-col gap-2" onSubmit={handleSignUp}>
