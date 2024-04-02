@@ -1,4 +1,4 @@
-import FavoriteHeart from "../../public/assets/FavoriteHeart";
+import FavoriteHeart from "../../../public/assets/FavoriteHeart";
 import { Button } from "../Common/Button";
 
 export const Card = ({
