@@ -1,6 +1,5 @@
 function YrgoArrowButton() {
   const handleClick = () => {
-    console.log("You clicked the arrow!");
     document
       .getElementById("save-the-date")
       .scrollIntoView({ behavior: "smooth" });

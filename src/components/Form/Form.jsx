@@ -102,11 +102,11 @@ function Form() {
         </div>
         <div className="flex flex-col gap-2">
           <span>LIA</span>
-          <CheckBoxContainer>
+          <CheckBoxGrid>
             <label htmlFor="platser">
               Antal platser:
               <select
-                className="border-none bg-cloud-grey py-0"
+                className="border-none py-0"
                 id="platser"
                 onChange={handlePositionChange}
               >
@@ -117,11 +117,11 @@ function Form() {
                 ))}
               </select>
             </label>
-          </CheckBoxContainer>
+          </CheckBoxGrid>
         </div>
         <div className="flex flex-col gap-2">
           <span>VI TAR EMOT</span>
-          <CheckBoxContainer rows="grid-rows-1" cols="grid-cols-2" gap="gap-4">
+          <CheckBoxGrid rows="grid-rows-1" cols="grid-cols-2" gap="gap-4">
             <div className="flex gap-2 relative">
               <CheckboxInput
                 id="webbutveckling"
@@ -146,11 +146,11 @@ function Form() {
               <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
-          </CheckBoxContainer>
+          </CheckBoxGrid>
         </div>
         <div className="flex flex-col gap-2">
           <span>VI JOBBAR MED</span>
-          <CheckBoxContainer rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
+          <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
             <div className="flex gap-2 relative">
               <CheckboxInput
                 id="frontend-checkbox"
@@ -212,7 +212,7 @@ function Form() {
               <CheckboxChecked />
               <CheckboxUnchecked />
             </div>
-          </CheckBoxContainer>
+          </CheckBoxGrid>
         </div>
         <div className="flex justify-end">
           <Button type="submit">ANMÄL</Button>
