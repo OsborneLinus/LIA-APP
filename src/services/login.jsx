@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "../assets/YrgoRed.png";
+import logo from "../../public/assets/YrgoRed.png";
 import App from "../App";
 import { Button } from "../components/Common/Button";
-
 import supabase from "./supabase";
 
 export const LoginForm = () => {
