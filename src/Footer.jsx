@@ -1,5 +1,5 @@
 import App from "./App";
-import logo from "../public/assets/YrgoRed.png";
+import logo from "/assets/YrgoRed.png";
 import RightArrow from "../public/assets/SidoPil.svg?react";
 
 export default function Footer() {

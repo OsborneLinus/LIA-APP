@@ -1,5 +1,5 @@
 import App from "./App";
-import logo from "../public/assets/YrgoRed.png";
+import logo from "/assets/YrgoRed.png";
 
 export default function Header() {
   return (
