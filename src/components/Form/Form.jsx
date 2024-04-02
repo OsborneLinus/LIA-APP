@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import supabase from "../../services/supabase";
 import { Button } from "../Common/Button";
 import { CheckBoxGrid } from "./CheckBoxGrid";
-import CheckboxChecked from "../../assets/CheckboxChecked";
+import CheckboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
 import ConfirmationPage from "./ConfirmationPage";
 import { TextInput } from "./TextInput";
 
-function Form() {
+function Form({}) {
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
   const [url, setUrl] = useState("");

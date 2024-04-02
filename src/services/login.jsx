@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "../assets/YrgoRed.png";
+import logo from "/assets/YrgoRed.png";
 import App from "../App";
 import { Button } from "../components/Common/Button";
-
 import supabase from "./supabase";
+import Hero from "../Hero";
 
-export const LoginForm = () => {
+export const LoginForm = ({ session }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

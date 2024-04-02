@@ -15,9 +15,9 @@ module.exports = {
       },
       keyframes: {
         imageChange: {
-          "0%": { backgroundImage: "url('src/assets/Heart.svg')" },
-          "50%": { backgroundImage: "url('src/assets/Skull.svg')" },
-          "100%": { backgroundImage: "url('src/assets/Heart.svg')" },
+          "0%": { backgroundImage: "url('/assets/Heart.svg')" },
+          "50%": { backgroundImage: "url('/assets/Skull.svg')" },
+          "100%": { backgroundImage: "url('/assets/Heart.svg')" },
         },
       },
       animation: {
