@@ -5,6 +5,7 @@ import { FilterDropdown } from "./FilterDropdown";
 
 export const CardContainer = ({ children }) => {
   const [companies, setCompanies] = useState([]);
+  const [filter, setFilter] = useState([]);
 
   useEffect(() => {
     getCompanies();
@@ -15,13 +16,29 @@ export const CardContainer = ({ children }) => {
     setCompanies(data);
   }
 
+  const filteredCompanies = companies.filter((company) => {
+    // When no filter is choosen, show all companies
+    if (filter.length === 0) {
+      return true;
+    }
+
+    const hasRoleFilter = company.role.some((roleTag) =>
+      filter.includes(roleTag)
+    );
+    const hasTechFilter = company.tech.some((techTag) =>
+      filter.includes(techTag)
+    );
+
+    return hasRoleFilter || hasTechFilter;
+  });
+
   return (
     <div className="flex flex-col ">
       <div className="flex justify-end px-6">
-        <FilterDropdown />
+        <FilterDropdown filter={filter} setFilter={setFilter} />
       </div>
       <div className="flex flex-col p-6 gap-6">
-        {companies.map((company) => {
+        {filteredCompanies.map((company) => {
           return (
             <Card
               key={company.id}
