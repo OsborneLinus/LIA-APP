@@ -15,3 +15,8 @@ input[type="checkbox"]:checked {
 button[type="button"].bg-asphalt-grey {
   background-color: #333;
 }
+
+label {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
