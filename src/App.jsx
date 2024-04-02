@@ -11,17 +11,6 @@ import { LoginForm } from "./services/login.jsx";
 import Footer from "./Footer.jsx";
 
 export default function App() {
-  const [companies, setCompanies] = useState([]);
-
-  useEffect(() => {
-    getCompanies();
-  }, []);
-
-  async function getCompanies() {
-    const { data } = await supabase.from("companies").select();
-    setCompanies(data);
-  }
-
   return (
     <>
       <Header />
@@ -29,21 +18,7 @@ export default function App() {
       <Form />
       {/* <LoginForm />
       <SignupForm /> */}
-      <CardContainer>
-        {companies.map((company) => {
-          return (
-            <Card
-              key={company.id}
-              companyId={company.id}
-              companyName={company.name}
-              positions={company.position}
-              role={company.role}
-              tech={company.tech}
-              contact={company.contact}
-            />
-          );
-        })}
-      </CardContainer>
+      <CardContainer />
       <Footer />
     </>
   );
