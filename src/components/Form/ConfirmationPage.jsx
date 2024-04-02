@@ -16,7 +16,7 @@ export default function ConfirmationPage({ setIsSubmitted }) {
         <div className="flex justify-between">
           <AnimationHeartSkull />
           <button className="p-8" onClick={() => setIsSubmitted(false)}>
-            <img src="public/assets/Yrgo-X.svg" />
+            <img src="/assets/YrgoX.svg" alt="" />
           </button>
         </div>
         <div className="pt-10 pb-10 pl-6">
