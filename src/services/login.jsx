@@ -4,9 +4,10 @@ import logo from "/assets/YrgoRed.png";
 import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "./supabase";
-import Hero from "../Hero";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = ({ session }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,8 +17,11 @@ export const LoginForm = ({ session }) => {
       email,
       password,
     });
-    if (error) console.error("Error logging in:", error.message);
-    else console.log("Data inserted successfully");
+    if (error) {
+      console.error("Error logging in:", error.message);
+    } else {
+      navigate("/");
+    }
   };
 
   return (
