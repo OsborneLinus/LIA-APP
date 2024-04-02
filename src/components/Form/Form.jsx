@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import supabase from "../../services/supabase";
 import { Button } from "../Common/Button";
 import { CheckBoxGrid } from "./CheckBoxGrid";
-import CheckboxChecked from "../../../public/assets/CheckboxChecked";
+import CheckboxChecked from "./CheckboxChecked";
 import { CheckboxInput } from "./CheckboxInput";
 import CheckboxUnchecked from "./CheckboxUnchecked";
 import ConfirmationPage from "./ConfirmationPage";
