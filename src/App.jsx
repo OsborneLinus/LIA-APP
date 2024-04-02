@@ -9,6 +9,8 @@ import { CardContainer } from "./components/Cards/CardContainer.jsx";
 import { SignupForm } from "./services/SignUp.jsx";
 import { LoginForm } from "./services/login.jsx";
 import Footer from "./Footer.jsx";
+import What from "./components/Common/What.jsx";
+import Who from "./components/Common/Who.jsx";
 
 export default function App() {
   const [companies, setCompanies] = useState([]);
@@ -26,6 +28,8 @@ export default function App() {
     <>
       <Header />
       <Hero view="company" />
+      <What />
+      <Who />
       <Form />
       {/* <LoginForm />
       <SignupForm /> */}

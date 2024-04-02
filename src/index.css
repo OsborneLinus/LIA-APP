@@ -11,3 +11,7 @@
 input[type="checkbox"]:checked {
   background-color: transparent !important;
 }
+
+button[type="button"].bg-asphalt-grey {
+  background-color: #333;
+}
