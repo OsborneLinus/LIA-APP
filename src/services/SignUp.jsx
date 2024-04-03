@@ -38,7 +38,7 @@ export const SignupForm = () => {
           <img src={logo} alt="Yrgo logo" onClick={App} />
         </a>
       </div>
-      <div className="pl-5 pb-12 flex-col justify-start items-start gap-2 inline-flex">
+      <div className="px-6 pb-12 flex-col justify-start items-start gap-2 inline-flex">
         <div className="text-zinc-800 text-5xl font-bold leading-[57px]">
           SKAPA KONTO
         </div>
@@ -56,8 +56,8 @@ export const SignupForm = () => {
           </button>
         </div>
       </div>
-      <form className="flex flex-col gap-2" onSubmit={handleSignUp}>
-        <div className="flex flex-col gap-4 p-4">
+      <form className="flex flex-col gap-6" onSubmit={handleSignUp}>
+        <div className="flex flex-col gap-2 px-6">
           <label htmlFor="email">E-POST</label>
           <TextInput
             id="email"
@@ -67,7 +67,7 @@ export const SignupForm = () => {
             placeholder="namn@foretag.com"
           />
         </div>
-        <div className="flex flex-col gap-4 p-4">
+        <div className="flex flex-col gap-2 px-6">
           <label htmlFor="password">LÖSENORD</label>
           <TextInput
             id="password"

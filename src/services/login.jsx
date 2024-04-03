@@ -26,20 +26,20 @@ export const LoginForm = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col items-end p-4">
+      <div className="flex flex-col items-end p-6">
         <a className="" href="/">
           <img src={logo} alt="Yrgo logo" onClick={App} />
         </a>
       </div>
-      <div className="p-4 text-base font-normal">
+      <div className="p-6 text-base font-normal">
         <h1 className="text-5xl font-bold ">LOGGA IN</h1>
         <p className="inline-flex">Har du inte ett konto?</p>
         <button className="underline p-2 " onClick={() => navigate("/signup")}>
           Skapa ett här!
         </button>
       </div>
-      <form className="flex flex-col gap-2" onSubmit={handleLogin}>
-        <div className="flex flex-col gap-4 p-4">
+      <form className="flex flex-col gap-6" onSubmit={handleLogin}>
+        <div className="flex flex-col gap-2 px-6">
           <label htmlFor="email">E-POST</label>
           <TextInput
             id="email"
@@ -49,7 +49,7 @@ export const LoginForm = () => {
             placeholder="namn@foretag.com"
           />
         </div>
-        <div className="flex flex-col gap-4 p-4 pb-12">
+        <div className="flex flex-col gap-4 px-6 pb-12">
           <label htmlFor="password">LÖSENORD</label>
           <TextInput
             id="password"
