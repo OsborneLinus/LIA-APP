@@ -43,7 +43,6 @@ function AppRoutes() {
             ) : (
               <>
                 <Who />
-                <Form />
               </>
             )}
             <Footer />

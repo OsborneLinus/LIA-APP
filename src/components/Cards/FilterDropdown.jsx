@@ -53,7 +53,7 @@ export const FilterDropdown = ({ filter, setFilter }) => {
               value="WU"
               onChange={handleFilterChange}
             />
-            <label htmlFor="webbtveckling-checkbox">Webbutveckling</label>
+            <label htmlFor="webbutveckling-checkbox">Webbutveckling</label>
             <CheckboxChecked />
             <CheckboxUnchecked />
           </div>
