@@ -15,7 +15,7 @@ function Form({}) {
   const [url, setUrl] = useState("");
   const [role, setRole] = useState([]);
   const [tech, setTech] = useState([]);
-  const [position, setPosition] = useState("");
+  const [position, setPosition] = useState("1-2");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const positions = ["1-2", "3-4", "5-6", "Vet ej"];
 
@@ -50,11 +50,9 @@ function Form({}) {
         name,
         contact,
         url,
-        // role: role.join(", "),
         role,
         position,
         tech,
-        // tech: tech.join(", "),
       },
     ]);
     if (error) console.error("Error inserting data: ", error);
@@ -73,7 +71,6 @@ function Form({}) {
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="Företagsnamn"
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -85,7 +82,6 @@ function Form({}) {
             value={contact}
             onChange={(event) => setContact(event.target.value)}
             placeholder="namn@foretag.se"
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -97,7 +93,6 @@ function Form({}) {
             value={url}
             onChange={(event) => setUrl(event.target.value)}
             placeholder="https://foretag.se"
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -109,6 +104,7 @@ function Form({}) {
                 className="border-none py-0"
                 id="platser"
                 onChange={handlePositionChange}
+                defaultValue={positions[0]}
               >
                 {positions.map((value) => (
                   <option value={value} key={value}>
