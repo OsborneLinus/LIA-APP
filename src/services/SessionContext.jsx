@@ -30,15 +30,6 @@ export function SessionProvider({ children }) {
 
   const isLoggedIn = session && session.user;
 
-  useEffect(() => {
-    getCompanies();
-  }, []);
-
-  async function getCompanies() {
-    const { data } = await supabase.from("companies").select();
-    setCompanies(data);
-  }
-
   return (
     <SessionContext.Provider value={{ session, isLoggedIn, companies }}>
       {children}

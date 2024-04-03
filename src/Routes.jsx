@@ -15,7 +15,7 @@ import Footer from "./Footer";
 import { CardContainer } from "./components/Cards/CardContainer";
 
 function AppRoutes() {
-  const { session, isLoggedIn, companies } = useContext(SessionContext);
+  const { session, isLoggedIn } = useContext(SessionContext);
   return (
     <Routes>
       <Route
@@ -27,7 +27,7 @@ function AppRoutes() {
             <What />
 
             {isLoggedIn ? (
-              <CardContainer>
+              <>
                 <Button
                   type="button"
                   size="large"
@@ -38,20 +38,8 @@ function AppRoutes() {
                 >
                   Logga ut
                 </Button>
-                {companies.map((company) => {
-                  return (
-                    <Card
-                      key={company.id}
-                      companyId={company.id}
-                      companyName={company.name}
-                      positions={company.position}
-                      role={company.role}
-                      tech={company.tech}
-                      contact={company.contact}
-                    />
-                  );
-                })}
-              </CardContainer>
+                <CardContainer />
+              </>
             ) : (
               <>
                 <Who />

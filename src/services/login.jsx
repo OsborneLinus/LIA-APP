@@ -6,7 +6,7 @@ import { Button } from "../components/Common/Button";
 import supabase from "./supabase";
 import { useNavigate } from "react-router-dom";
 
-export const LoginForm = ({ session }) => {
+export const LoginForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,17 +31,14 @@ export const LoginForm = ({ session }) => {
           <img src={logo} alt="Yrgo logo" onClick={App} />
         </a>
       </div>
+      <div className="p-4 text-base font-normal">
+        <h1 className="text-5xl font-bold ">LOGGA IN</h1>
+        <p className="inline-flex">Har du inte ett konto?</p>
+        <button className="underline p-2 " onClick={() => navigate("/signup")}>
+          Skapa ett här!
+        </button>
+      </div>
       <form className="flex flex-col gap-2" onSubmit={handleLogin}>
-        <div className="p-4 text-base font-normal">
-          <h1 className="text-5xl font-bold ">LOGGA IN</h1>
-          <p className="inline-flex">Har du inte ett konto?</p>
-          <button
-            className="underline p-2 "
-            onClick={() => navigate("/signup")}
-          >
-            Skapa ett här!
-          </button>
-        </div>
         <div className="flex flex-col gap-4 p-4">
           <label htmlFor="email">E-POST</label>
           <TextInput
