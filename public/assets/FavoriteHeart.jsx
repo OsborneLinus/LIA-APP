@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useEffect } from "react";
+import supabase from "../../src/services/supabase";
 
-function FavoriteHeart(companyId) {
+function FavoriteHeart({ companyId, userId }) {
   const defaultHeart = (
     <svg
       width="24"
@@ -36,19 +38,60 @@ function FavoriteHeart(companyId) {
   );
 
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    async function fetchFavorites() {
+      const { data, error } = await supabase
+        .from("user_company_favorites")
+        .select("*")
+        .eq("userid", userId)
+        .eq("companyid", companyId);
 
+      if (error) {
+        console.error("Error Fetching favorites: ", error);
+      } else {
+        setIsFavorite(data.length > 0);
+      }
+      setIsLoading(false);
+    }
+    fetchFavorites();
+  }, [userId, companyId]);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   const heart = isFavorite ? favoriteHeart : defaultHeart;
 
-  function handleClick() {
-    setIsFavorite(!isFavorite);
+  async function handleClick() {
+    const newFavoriteStatus = !isFavorite;
+    setIsFavorite(newFavoriteStatus);
     console.log("company id", companyId);
+
+    if (newFavoriteStatus) {
+      // If it's not a favorite, add it to the favorites.
+      const { error } = await supabase
+        .from("user_company_favorites")
+        .insert([{ userid: userId, companyid: companyId }]);
+
+      if (error) {
+        console.error("Error inserting favorite:", error);
+      } else {
+        setIsFavorite(newFavoriteStatus);
+      }
+    } else {
+      const { error } = await supabase
+        .from("user_company_favorites")
+        .delete()
+        .eq("userid", userId)
+        .eq("companyid", companyId);
+      if (error) {
+        console.error("Error deleting favorite: ", error);
+      } else {
+        setIsFavorite(newFavoriteStatus);
+      }
+    }
   }
 
-  return (
-    <div>
-      <button onClick={handleClick}>{heart}</button>
-    </div>
-  );
+  return <button onClick={handleClick}>{heart}</button>;
 }
 
 export default FavoriteHeart;

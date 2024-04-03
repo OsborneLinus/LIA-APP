@@ -1,5 +1,7 @@
 import FavoriteHeart from "../../../public/assets/FavoriteHeart";
 import { Button } from "../Common/Button";
+import { SessionContext } from "../../services/SessionContext";
+import { useContext } from "react";
 
 export const Card = ({
   companyName,
@@ -11,12 +13,14 @@ export const Card = ({
   companyId,
 }) => {
   const roles = role.length == 2 ? `${role[0]} & ${role[1]}` : role[0];
+  const { session } = useContext(SessionContext);
+  const userId = session ? session.user.id : null;
   return (
     <div className="flex flex-col p-4 gap-6 bg-white text-black shadow rounded">
       <div className="flex flex-col gap-4">
         <div className="flex justify-between">
           <h2 className="text-2xl">{companyName}</h2>
-          <FavoriteHeart companyId={companyId} />
+          <FavoriteHeart companyId={companyId} userId={userId} />
         </div>
         <div className="flex justify-between">
           <p>{positions} LIA platser</p>

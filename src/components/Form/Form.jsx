@@ -73,7 +73,6 @@ function Form({}) {
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="Företagsnamn"
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -85,7 +84,6 @@ function Form({}) {
             value={contact}
             onChange={(event) => setContact(event.target.value)}
             placeholder="namn@foretag.se"
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -97,7 +95,6 @@ function Form({}) {
             value={url}
             onChange={(event) => setUrl(event.target.value)}
             placeholder="https://foretag.se"
-            required
           />
         </div>
         <div className="flex flex-col gap-2">
