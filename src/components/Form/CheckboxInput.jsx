@@ -1,4 +1,4 @@
-export const CheckboxInput = ({ id, value, onChange }) => {
+export const CheckboxInput = ({ id, value, onChange, required }) => {
   return (
     <input
       type="checkbox"
@@ -7,6 +7,7 @@ export const CheckboxInput = ({ id, value, onChange }) => {
       name={id}
       className="appearance-none peer w-6 h-6 bg-transparent focus:ring-0"
       onChange={onChange}
+      required={required}
     />
   );
 };
