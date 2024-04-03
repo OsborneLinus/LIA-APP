@@ -6,6 +6,9 @@ import { Button } from "../components/Common/Button";
 import supabase from "../services/supabase";
 import CheckedSVG from "../../public/assets/check.svg?react";
 import { useNavigate } from "react-router-dom";
+import { CheckboxInput } from "../components/Form/CheckboxInput";
+import CheckboxChecked from "../components/Form/CheckboxChecked";
+import CheckboxUnchecked from "../components/Form/CheckboxUnchecked";
 
 export const SignupForm = () => {
   const navigate = useNavigate();
@@ -39,7 +42,7 @@ export const SignupForm = () => {
         <div className="text-zinc-800 text-5xl font-bold leading-[57px]">
           SKAPA KONTO
         </div>
-        <div className=" text-base font-normal leading-snug">
+        <div className="text-base font-normal leading-snug">
           Som student kan du skapa ett konto för att ta del av vilka företag som
           kommer vara på plats under minglet och deras kontaktinformation.{" "}
         </div>
@@ -64,7 +67,7 @@ export const SignupForm = () => {
             placeholder="namn@foretag.com"
           />
         </div>
-        <div className="flex flex-col gap-4 p-4 pb-12">
+        <div className="flex flex-col gap-4 p-4">
           <label htmlFor="password">LÖSENORD</label>
           <TextInput
             id="password"
@@ -74,39 +77,23 @@ export const SignupForm = () => {
             placeholder="******"
           />
         </div>
-        <div className="flex items-center gap-2 justify-center">
-          <label htmlFor="policy" className="flex items-center pb-12">
-            <div
-              className={`border-2 ${isChecked ? "" : ""} m-2`}
-              onClick={handleInputChange}
-              style={{ width: "20px", height: "20px", position: "relative" }}
-            >
-              {isChecked && (
-                <CheckedSVG
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              )}{" "}
-            </div>
-            Jag godkänner{" "}
-            <a className="underline pl-1" href="/">
-              villkoren
-            </a>
-          </label>
-          <input
-            className="sr-only"
-            id="policy"
-            type="checkbox"
-            required
-            checked={isChecked}
-            onChange={handleInputChange}
-          />
+        <div className="flex justify-center mt-2 mb-12">
+          <div className="flex gap-2 relative">
+            <CheckboxInput
+              id="policy-checkbox"
+              value="policy-consent"
+              onChange={handleInputChange}
+              required={true}
+            />{" "}
+            <label htmlFor="policy-checkbox">
+              Jag godkänner
+              <a className="underline pl-1" href="/">
+                villkoren
+              </a>
+            </label>
+            <CheckboxChecked />
+            <CheckboxUnchecked />
+          </div>
         </div>
 
         <div className="flex justify-center">

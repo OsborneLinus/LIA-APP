@@ -7,6 +7,7 @@ export const TextInput = ({ id, type, value, onChange, placeholder }) => {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
+      required
     ></input>
   );
 };
