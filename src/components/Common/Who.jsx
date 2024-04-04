@@ -10,13 +10,11 @@ function Who() {
   const [isStudent, setIsStudent] = useState(false);
 
   const handleCompany = () => {
-    console.log("I'm a company!");
     setIsCompany(!isCompany);
     setIsStudent(false);
   };
 
   const handleStudent = () => {
-    console.log("I'm a student!");
     setIsStudent(!isStudent);
     setIsCompany(false);
   };
