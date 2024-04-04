@@ -4,6 +4,11 @@ export default function ConfirmationPage({ setIsSubmitted }) {
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
+
+  const closeConfirmation = () => {
+    setIsSubmitted(false);
+    window.location.reload();
+  };
   return (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 md:py-10"
@@ -15,7 +20,7 @@ export default function ConfirmationPage({ setIsSubmitted }) {
       >
         <div className="flex justify-between">
           <AnimationHeartSkull />
-          <button className="p-8" onClick={() => setIsSubmitted(false)}>
+          <button className="p-8" onClick={closeConfirmation}>
             <img src="/assets/YrgoX.svg" alt="" />
           </button>
         </div>

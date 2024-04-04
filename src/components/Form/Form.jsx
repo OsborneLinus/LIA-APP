@@ -17,7 +17,7 @@ function Form({}) {
   const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("1-2");
   const [attendees, setAttendees] = useState("1-2");
-  const [month, setMonth] = useState("Vet ej");
+  const [month, setMonth] = useState("November 2024");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const positions = ["1-2", "3-4", "5-6", "Vet ej"];
   const monthOptions = [
