@@ -33,8 +33,8 @@ export const LoginForm = () => {
           Skapa ett här!
         </button>
       </div>
-      <form className="flex flex-col gap-2" onSubmit={handleLogin}>
-        <div className="flex flex-col gap-4 p-4">
+      <form className="flex flex-col gap-6" onSubmit={handleLogin}>
+        <div className="flex flex-col gap-2 px-6">
           <label htmlFor="email">E-POST</label>
           <TextInput
             id="email"
@@ -44,7 +44,7 @@ export const LoginForm = () => {
             placeholder="namn@foretag.com"
           />
         </div>
-        <div className="flex flex-col gap-4 p-4 pb-12">
+        <div className="flex flex-col gap-4 px-6 pb-12">
           <label htmlFor="password">LÖSENORD</label>
           <TextInput
             id="password"

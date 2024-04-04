@@ -64,7 +64,6 @@ function FavoriteHeart({ companyId, userId }) {
   async function handleClick() {
     const newFavoriteStatus = !isFavorite;
     setIsFavorite(newFavoriteStatus);
-    console.log("company id", companyId);
 
     if (newFavoriteStatus) {
       // If it's not a favorite, add it to the favorites.

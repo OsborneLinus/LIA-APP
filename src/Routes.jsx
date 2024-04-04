@@ -6,11 +6,9 @@ import { LoginForm } from "./services/login";
 import { useContext } from "react";
 import { SessionContext } from "./services/SessionContext";
 import { Button } from "./components/Common/Button";
-import { Card } from "./components/Cards/Card";
 import Header from "./Header";
 import Hero from "./Hero";
 import What from "./components/Common/What";
-import Form from "./components/Form/Form";
 import Footer from "./Footer";
 import { CardContainer } from "./components/Cards/CardContainer";
 import UserProfile from "./UserProfile";
@@ -29,16 +27,18 @@ function AppRoutes() {
 
             {isLoggedIn ? (
               <>
-                <Button
-                  type="button"
-                  size="large"
-                  onClick={async () => {
-                    const { error } = await supabase.auth.signOut();
-                    if (error) console.error("Error signing out");
-                  }}
-                >
-                  Logga ut
-                </Button>
+                <div className="ml-6">
+                  <Button
+                    type="button"
+                    size="large"
+                    onClick={async () => {
+                      const { error } = await supabase.auth.signOut();
+                      if (error) console.error("Error signing out");
+                    }}
+                  >
+                    Logga ut
+                  </Button>
+                </div>
                 <CardContainer />
               </>
             ) : (
