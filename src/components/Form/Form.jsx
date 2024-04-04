@@ -16,8 +16,18 @@ function Form({}) {
   const [role, setRole] = useState([]);
   const [tech, setTech] = useState([]);
   const [position, setPosition] = useState("1-2");
+  const [attendees, setAttendees] = useState("1-2");
+  const [month, setMonth] = useState("Vet ej");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const positions = ["1-2", "3-4", "5-6", "Vet ej"];
+  const monthOptions = [
+    "November 2024",
+    "December 2024",
+    "Januari 2025",
+    "Februari 2025",
+    "Vet ej",
+  ];
+  const attendeesOptions = ["1-2", "3-4", "5-6", "Vet ej"];
 
   const handleRoleChange = (event) => {
     if (event.target.checked) {
@@ -39,10 +49,6 @@ function Form({}) {
     }
   };
 
-  const handlePositionChange = (event) => {
-    setPosition(event.target.value);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { error } = await supabase.from("companies").insert([
@@ -53,6 +59,8 @@ function Form({}) {
         role,
         position,
         tech,
+        attendees,
+        month,
       },
     ]);
     if (error) console.error("Error inserting data: ", error);
@@ -96,27 +104,68 @@ function Form({}) {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <span className="px-4">LIA</span>
+          <label htmlFor="attendees">HUR MÅNGA KOMMER?</label>
           <CheckBoxGrid>
-            <label htmlFor="platser" className="px-0">
-              Antal platser:
+            <div>
               <select
-                className="border-none py-0"
-                id="platser"
-                onChange={handlePositionChange}
-                defaultValue={positions[0]}
+                className="border-none py-0 pl-0"
+                id="attendees"
+                onChange={(event) => setAttendees(event.target.value)}
+                defaultValue={attendeesOptions[0]}
               >
-                {positions.map((value) => (
+                {attendeesOptions.map((value) => (
                   <option value={value} key={value}>
                     {value}
                   </option>
                 ))}
               </select>
-            </label>
+            </div>
           </CheckBoxGrid>
         </div>
         <div className="flex flex-col gap-2">
-          <span className="px-4">VI TAR EMOT</span>
+          <div className="flex justify-between">
+            <label htmlFor="platser" className="w-1/2">
+              ANTAL LIA-PLATSER
+            </label>
+            <label htmlFor="fromMonth" className="w-1/2">
+              START
+            </label>
+          </div>
+          <CheckBoxGrid>
+            <div className="flex justify-evenly">
+              <div className="w-1/2">
+                <select
+                  className="border-none py-0  pl-0"
+                  id="platser"
+                  onChange={(event) => setPosition(event.target.value)}
+                  defaultValue={positions[0]}
+                >
+                  {positions.map((value) => (
+                    <option value={value} key={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="w-1/2">
+                <select
+                  className="border-none py-0 pl-2"
+                  id="fromMonth"
+                  onChange={(event) => setMonth(event.target.value)}
+                  defaultValue={monthOptions[0]}
+                >
+                  {monthOptions.map((value) => (
+                    <option value={value} key={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </CheckBoxGrid>
+        </div>
+        <div className="flex flex-col gap-2">
+          <span>VI TAR EMOT</span>
           <CheckBoxGrid rows="grid-rows-1" cols="grid-cols-2" gap="gap-4">
             <div className="flex gap-2 relative">
               <CheckboxInput
@@ -145,7 +194,7 @@ function Form({}) {
           </CheckBoxGrid>
         </div>
         <div className="flex flex-col gap-2">
-          <span className="px-4">VI JOBBAR MED</span>
+          <span>VI JOBBAR MED</span>
           <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
             <div className="flex gap-2 relative">
               <CheckboxInput
