@@ -5,6 +5,7 @@ export const Button = ({
   background,
   textColor,
   onClick,
+  isDisabled,
 }) => {
   const sizeClassNames = size === "small" ? "px-2 py-1" : "text-2xl px-4 py-2";
   const backgroundColor =
@@ -14,8 +15,11 @@ export const Button = ({
   return (
     <button
       type={type}
-      className={`bg-${backgroundColor} ${text} rounded flex justify-center items-center w-fit ${sizeClassNames}`}
+      className={`${
+        isDisabled ? "bg-gray-500" : `bg-${backgroundColor}`
+      } ${text} rounded flex justify-center items-center w-fit ${sizeClassNames}`}
       onClick={onClick}
+      disabled={isDisabled}
     >
       {children}
     </button>

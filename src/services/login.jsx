@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "/assets/YrgoRed.png";
-import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "./supabase";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -26,12 +25,8 @@ export const LoginForm = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col items-end p-6">
-        <a className="" href="/">
-          <img src={logo} alt="Yrgo logo" onClick={App} />
-        </a>
-      </div>
-      <div className="p-6 text-base font-normal">
+      <Header />
+      <div className="p-4 text-base font-normal">
         <h1 className="text-5xl font-bold ">LOGGA IN</h1>
         <p className="inline-flex">Har du inte ett konto?</p>
         <button className="underline p-2 " onClick={() => navigate("/signup")}>

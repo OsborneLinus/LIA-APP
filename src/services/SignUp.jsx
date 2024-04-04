@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "/assets/YrgoRed.png";
-import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "../services/supabase";
-import CheckedSVG from "../../public/assets/check.svg?react";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header";
 import { CheckboxInput } from "../components/Form/CheckboxInput";
 import CheckboxChecked from "../components/Form/CheckboxChecked";
 import CheckboxUnchecked from "../components/Form/CheckboxUnchecked";
@@ -33,12 +31,8 @@ export const SignupForm = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col items-end p-8">
-        <a className="" href="/">
-          <img src={logo} alt="Yrgo logo" onClick={App} />
-        </a>
-      </div>
-      <div className="px-6 pb-12 flex-col justify-start items-start gap-2 inline-flex">
+      <Header />
+      <div className="pl-5 pb-12 flex-col justify-start items-start gap-2 inline-flex">
         <div className="text-zinc-800 text-5xl font-bold leading-[57px]">
           SKAPA KONTO
         </div>
