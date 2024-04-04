@@ -10,37 +10,24 @@ export const CardContainer = ({ children }) => {
 
   useEffect(() => {
     getCompanies();
-  }, []);
+  }, [roleFilter, techFilter]);
 
   async function getCompanies() {
-    const { data } = await supabase.from("companies").select();
+    let query = supabase.from("companies").select();
+
+    // Apply role filtering only if a role filter is chosen
+    if (roleFilter.length > 0) {
+      query = query.overlaps("role", roleFilter);
+    }
+
+    // Apply tech filtering only if a tech filter is chosen
+    if (techFilter.length > 0) {
+      query = query.overlaps("tech", techFilter);
+    }
+
+    const { data } = await query;
     setCompanies(data);
   }
-
-  const roleFilteredCompanies = companies.filter((company) => {
-    // When no filter is choosen, show all companies
-    if (roleFilter.length === 0) {
-      return true;
-    }
-
-    const hasRoleFilter = company.role.some((roleTag) =>
-      roleFilter.includes(roleTag)
-    );
-
-    return hasRoleFilter;
-  });
-
-  const fullyFilteredCompanies = roleFilteredCompanies.filter((company) => {
-    // When no filter is choosen, show all companies
-    if (techFilter.length === 0) {
-      return true;
-    }
-
-    const hasTechFilter = company.tech.some((techTag) =>
-      techFilter.includes(techTag)
-    );
-    return hasTechFilter;
-  });
 
   return (
     <div className="flex flex-col ">
@@ -53,7 +40,7 @@ export const CardContainer = ({ children }) => {
         />
       </div>
       <div className="flex flex-col p-6 gap-6">
-        {fullyFilteredCompanies.map((company) => {
+        {companies.map((company) => {
           return (
             <Card
               key={company.id}
