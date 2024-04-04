@@ -13,6 +13,7 @@ import What from "./components/Common/What";
 import Form from "./components/Form/Form";
 import Footer from "./Footer";
 import { CardContainer } from "./components/Cards/CardContainer";
+import UserProfile from "./UserProfile";
 
 function AppRoutes() {
   const { session, isLoggedIn } = useContext(SessionContext);
@@ -51,6 +52,7 @@ function AppRoutes() {
       />
       <Route path="/signup" element={<SignupForm />} />
       <Route path="/login" element={<LoginForm />} />
+      <Route path="/userprofile" element={<UserProfile />} />
     </Routes>
   );
 }
