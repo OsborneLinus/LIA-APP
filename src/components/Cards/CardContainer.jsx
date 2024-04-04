@@ -2,18 +2,48 @@ import { useState, useEffect } from "react";
 import supabase from "../../services/supabase";
 import { Card } from "./Card";
 import { FilterDropdown } from "./FilterDropdown";
+import { Button } from "../Common/Button";
+
+const ITEM_PER_PAGE = 4;
 
 export const CardContainer = ({ children }) => {
   const [companies, setCompanies] = useState([]);
   const [roleFilter, setRoleFilter] = useState([]);
   const [techFilter, setTechFilter] = useState([]);
+  const [page, setPage] = useState(0);
+  const [canFetchMore, setCanFetchMore] = useState(true);
 
+  // This effect is run when new filter is selected
   useEffect(() => {
-    getCompanies();
+    // We reset the page to 0 because we wanna start with new cards when you update filters
+    setPage(0);
+    getCompanies(true, 0);
   }, [roleFilter, techFilter]);
 
-  async function getCompanies() {
-    let query = supabase.from("companies").select();
+  const getFromAndTo = (page) => {
+    let from = page * ITEM_PER_PAGE;
+    let to = from + ITEM_PER_PAGE;
+
+    // Offsetting so we don't get last card again
+    if (page > 0) {
+      from += 1;
+    }
+
+    return { from, to };
+  };
+
+  async function getCompanies(newFiltering, page) {
+    // Show the fetch more button again when new filters applies
+    if (newFiltering) {
+      setCanFetchMore(true);
+    }
+
+    const { from, to } = getFromAndTo(page);
+
+    let query = supabase
+      .from("companies")
+      .select()
+      .range(from, to + 1); // fetch one extra to check if we can fetch more (if we need button)
 
     // Apply role filtering only if a role filter is chosen
     if (roleFilter.length > 0) {
@@ -26,7 +56,22 @@ export const CardContainer = ({ children }) => {
     }
 
     const { data } = await query;
-    setCompanies(data);
+
+    // If we succeeded with fetching an extra we remove it again
+    if (data.length > ITEM_PER_PAGE) {
+      data.pop();
+    } else {
+      // No extra found so we hide the button
+      setCanFetchMore(false);
+    }
+
+    // Overwrite existing companies array with new data when we fetch with updated filters
+    if (newFiltering) {
+      setCompanies(data);
+    } else {
+      // Merge existing and incoming companies on a fetch more
+      setCompanies([...companies, ...data]);
+    }
   }
 
   return (
@@ -54,6 +99,18 @@ export const CardContainer = ({ children }) => {
           );
         })}
       </div>
+      {canFetchMore && (
+        <div className="flex justify-center mt-12">
+          <Button
+            onClick={() => {
+              getCompanies(false, page + 1);
+              setPage(page + 1);
+            }}
+          >
+            LÄS IN FLER
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
