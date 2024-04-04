@@ -2,6 +2,7 @@ import FavoriteHeart from "../../../public/assets/FavoriteHeart";
 import { Button } from "../Common/Button";
 import { SessionContext } from "../../services/SessionContext";
 import { useContext } from "react";
+import CopyEmailButton from "./CopyEmailButton";
 
 export const Card = ({
   companyName,
@@ -44,7 +45,7 @@ export const Card = ({
           })}
         </div>
         <div className="self-end">
-          <Button size="small">{contact}</Button>
+          <CopyEmailButton size="small" type="button" contact={contact} />
         </div>
       </div>
     </div>
