@@ -1,6 +1,6 @@
+import { useRef } from "react";
 import YrgoArrowButton from "./components/Common/YrgoArrowButton.jsx";
 import SaveTheDate from "./components/SaveTheDate.jsx";
-import { useRef } from "react";
 
 export default function Hero({ session }) {
   const isLoggedIn = session && session.user !== null;
