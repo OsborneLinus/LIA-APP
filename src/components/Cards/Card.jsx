@@ -12,6 +12,7 @@ export const Card = ({
   tech,
   contact,
   companyId,
+  url,
 }) => {
   const roles = role.length == 2 ? `${role[0]} & ${role[1]}` : role[0];
   const { session } = useContext(SessionContext);
@@ -19,14 +20,25 @@ export const Card = ({
   return (
     <div className="flex flex-col p-4 gap-6 bg-white text-black shadow rounded">
       <div className="flex flex-col gap-4">
-        <div className="flex justify-between">
-          <h2 className="text-2xl">{companyName}</h2>
-          <FavoriteHeart companyId={companyId} userId={userId} />
+        <div>
+          <div className="flex justify-between">
+            <h2 className="text-2xl">{companyName}</h2>
+            <FavoriteHeart companyId={companyId} userId={userId} />
+          </div>
+          {/* <div>
+            <a
+              href={url}
+              target="_blank"
+              className="text-night-sky-blue hover:underline"
+            >
+              WEBBPLATS
+            </a>
+          </div> */}
         </div>
         <div className="flex justify-between">
-          <p>{positions} LIA platser</p>
+          <p>{positions === "Vet ej" ? "-" : positions + " platser"}</p>
           <span>|</span>
-          <p>Nov 2024</p>
+          <p>{start === "Vet ej" ? "-" : start}</p>
           <span>|</span>
           <p>{roles}</p>
         </div>

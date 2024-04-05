@@ -21,10 +21,10 @@ function Form({}) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const positions = ["1-2", "3-4", "5-6", "Vet ej"];
   const monthOptions = [
-    "November 2024",
-    "December 2024",
-    "Januari 2025",
-    "Februari 2025",
+    "Nov 2024",
+    "Dec 2024",
+    "Jan 2025",
+    "Feb 2025",
     "Vet ej",
   ];
   const attendeesOptions = ["1-2", "3-4", "5-6", "Vet ej"];
