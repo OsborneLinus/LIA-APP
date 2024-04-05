@@ -8,6 +8,8 @@ import Favorites from "./components/Favorites";
 import Footer from "./Footer";
 import { SessionContext } from "./services/SessionContext";
 import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { useLayoutEffect } from "react";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");

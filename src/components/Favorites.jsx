@@ -44,7 +44,10 @@ export default function Favorites() {
   }, [user]);
   return (
     <>
-      <div className="p-4 pl-5 pb-12 gap-2 text-base font-normal">
+      <div
+        id="favorites"
+        className="p-4 pl-5 pb-12 gap-2 text-base font-normal"
+      >
         <h1 className="text-5xl font-bold ">FAVORITER</h1>
         <p className="inline-flex">De företag du är intresserad utav </p>
       </div>

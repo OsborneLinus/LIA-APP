@@ -2,8 +2,8 @@ import App from "./App";
 import logo from "/assets/YrgoRed.png";
 import RightArrow from "../public/assets/SidoPil.svg?react";
 import FavoriteHeart from "../public/assets/FavoriteHeart.svg?react";
-import AccountLogo from "../public/assets/accountLogo.svg?react";
-import { useNavigate } from "react-router-dom";
+import AccountLogo from "../public/assets/AccountLogo.svg?react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -17,9 +17,9 @@ export default function Footer() {
       <div className="col-start-2 row-start-1 pt-4">
         <div className="inline-flex">
           <FavoriteHeart />{" "}
-          <button className="ml-2" onClick={() => navigate("/userprofile")}>
+          <Link className="ml-2" to="/userprofile#favorites">
             Favoriter
-          </button>
+          </Link>
         </div>
       </div>
       <div className="col-start-3 row-start-1 pt-4">
