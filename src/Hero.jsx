@@ -1,8 +1,14 @@
 import YrgoArrowButton from "./components/Common/YrgoArrowButton.jsx";
 import SaveTheDate from "./components/SaveTheDate.jsx";
+import { useRef } from "react";
 
 export default function Hero({ session }) {
   const isLoggedIn = session && session.user !== null;
+  const saveTheDateRef = useRef();
+
+  const handleClick = () => {
+    saveTheDateRef.current.scrollIntoView({ behavior: "smooth" });
+  };
 
   const defaultText = (
     <>
@@ -26,9 +32,9 @@ export default function Hero({ session }) {
       <div>
         <h1 className="text-5xl font-extralight font p-6">{heroText}</h1>
         <div className="flex justify-end mt-12 mb-6 p-6">
-          <YrgoArrowButton />
+          <YrgoArrowButton onClick={handleClick} />
         </div>
-        <SaveTheDate>
+        <SaveTheDate ref={saveTheDateRef}>
           Mingel mellan bransch och studerande Webbutvecklare och Digital
           Designers på Yrgo.
         </SaveTheDate>
