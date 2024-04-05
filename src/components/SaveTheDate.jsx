@@ -1,4 +1,6 @@
-function SaveTheDate({ children, ref }) {
+import { forwardRef } from "react";
+
+const SaveTheDate = forwardRef(({ children }, ref) => {
   return (
     <div
       ref={ref}
@@ -9,6 +11,6 @@ function SaveTheDate({ children, ref }) {
       <div className="basis-9/12 text-base leading-1.75">{children}</div>
     </div>
   );
-}
+});
 
 export default SaveTheDate;
