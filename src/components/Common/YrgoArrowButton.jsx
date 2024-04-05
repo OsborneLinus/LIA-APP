@@ -1,13 +1,7 @@
-function YrgoArrowButton() {
-  const handleClick = () => {
-    document
-      .getElementById("save-the-date")
-      .scrollIntoView({ behavior: "smooth" });
-  };
-
+function YrgoArrowButton({ onClick }) {
   return (
     <>
-      <button id="yrgo-arrow" onClick={handleClick}>
+      <button onClick={onClick} id="yrgo-arrow">
         <svg
           width="55"
           height="76"

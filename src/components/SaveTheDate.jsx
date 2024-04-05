@@ -1,7 +1,7 @@
-function SaveTheDate({ children }) {
+function SaveTheDate({ children, ref }) {
   return (
     <div
-      id="save-the-date"
+      ref={ref}
       className="p-6 flex gap-3.5 bg-night-sky-blue font-normal text-zinc-100"
     >
       <div className="basis-1/12 text-2xl">24 04 24</div>

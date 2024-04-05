@@ -3,15 +3,20 @@ import { Button } from "./Button";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "../Form/Form";
+import { useRef } from "react";
 
 function Who() {
   const navigate = useNavigate();
   const [isCompany, setIsCompany] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
+  const whoRef = useRef();
 
   const handleCompany = () => {
     setIsCompany(!isCompany);
     setIsStudent(false);
+    whoRef.current.scrollIntoView({
+      behavior: "smooth",
+    });
   };
 
   const handleStudent = () => {
@@ -29,7 +34,7 @@ function Who() {
 
   return (
     <>
-      <div className="p-6">
+      <div ref={whoRef} className="p-6">
         <h2 className="text-3xl font-semibold text-yrgo-red">VEM ÄR DU?</h2>
         <div className="flex gap-8 my-8 flex-wrap">
           <Button
