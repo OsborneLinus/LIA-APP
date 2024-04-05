@@ -95,6 +95,8 @@ export const CardContainer = ({ children }) => {
               role={company.role}
               tech={company.tech}
               contact={company.contact}
+              start={company.month}
+              url={company.url}
             />
           );
         })}
