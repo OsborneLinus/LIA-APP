@@ -8,8 +8,7 @@ import Favorites from "./components/Favorites";
 import Footer from "./Footer";
 import { SessionContext } from "./services/SessionContext";
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
-import { useLayoutEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
@@ -51,10 +50,26 @@ export default function UserProfile() {
       }
     }
   };
+  const location = useLocation();
+  const hash = location.hash;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (hash) {
+        const elementId = hash.substring(1);
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [hash]);
+
   return (
     <div className="flex flex-col">
       <Header />
-      <div className="p-4 text-base font-normal">
+      <div id="account" className="p-4 text-base font-normal">
         <h1 className="text-5xl font-bold ">KONTO</h1>
         <p className="inline-flex">
           Här kan du ändra dina kontaktupppgifter och se dina favoriter.
@@ -137,7 +152,7 @@ export default function UserProfile() {
           )}
         </div>
       </form>
-      <Favorites />
+      <Favorites id="favorites" />
       <Footer />
     </div>
   );

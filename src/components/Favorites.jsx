@@ -4,7 +4,7 @@ import { Card } from "./Cards/Card";
 import { SessionContext } from "../services/SessionContext";
 import { useContext } from "react";
 
-export default function Favorites() {
+export default function Favorites({ id }) {
   const [favorites, setFavorites] = useState([]);
   const { session } = useContext(SessionContext);
   const user = session ? session.user.id : null;
@@ -44,10 +44,7 @@ export default function Favorites() {
   }, [user]);
   return (
     <>
-      <div
-        id="favorites"
-        className="p-4 pl-5 pb-12 gap-2 text-base font-normal"
-      >
+      <div id={id} className="p-4 pl-5 pb-12 gap-2 text-base font-normal">
         <h1 className="text-5xl font-bold ">FAVORITER</h1>
         <p className="inline-flex">De företag du är intresserad utav </p>
       </div>
