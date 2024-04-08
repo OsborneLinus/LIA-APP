@@ -9,6 +9,7 @@ import Footer from "./Footer";
 import { SessionContext } from "./services/SessionContext";
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
@@ -16,11 +17,12 @@ export default function UserProfile() {
   const { session } = useContext(SessionContext);
   const user = session ? session.user.email : null;
   const [isEditing, setIsEditing] = useState(false);
+  const [showConfirmEdit, setShowConfirmEdit] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
   const [showEmailInput, setShowEmailInput] = useState(false);
   const [showPasswordInput, setShowPasswordInput] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     setIsDisabled(email === user && !password);
   }, [email, password, user]);
@@ -75,7 +77,7 @@ export default function UserProfile() {
           Här kan du ändra dina kontaktupppgifter och se dina favoriter.
         </p>
       </div>
-      <form className="flex flex-col gap-2">
+      <form className="flex flex-col gap-2 items-center">
         <div className="flex flex-col gap-4 p-4">
           {errorMessage && (
             <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
@@ -84,10 +86,14 @@ export default function UserProfile() {
           )}
           <Button
             type="button"
-            onClick={() => setShowEmailInput(!showEmailInput)}
-            size="small"
+            size="large"
+            onClick={() => {
+              setShowEmailInput(!showEmailInput);
+              setIsEditing(!showEmailInput);
+              setShowPasswordInput(false);
+            }}
           >
-            KLICKA HÄR FÖR ATT ÄNDRA E-POST ADRESS
+            ÄNDRA E-POSTADRESS
           </Button>
           {showEmailInput && (
             <div className="flex flex-col">
@@ -96,19 +102,25 @@ export default function UserProfile() {
                 id="email"
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
                 placeholder="namn@foretag.com"
               />
             </div>
           )}
         </div>
-        <div className="flex flex-col gap-4 p-4 pb-12">
+        <div className="flex flex-col gap-4 p-4">
           <Button
             type="button"
-            onClick={() => setShowPasswordInput(!showPasswordInput)}
-            size="small"
+            size="large"
+            onClick={() => {
+              setShowPasswordInput(!showPasswordInput);
+              setIsEditing(!showPasswordInput);
+              setShowEmailInput(false);
+            }}
           >
-            KLICKA HÄR FÖR ATT ÄNDRA LÖSENORD
+            ÄNDRA LÖSENORD
           </Button>
           {showPasswordInput && (
             <div className="flex flex-col">
@@ -117,25 +129,31 @@ export default function UserProfile() {
                 id="password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
                 placeholder="******"
               />
             </div>
           )}
         </div>
-        <div className="flex justify-center">
-          {!isEditing ? (
+        <div className="flex justify-center mb-4">
+          {isEditing && !showConfirmEdit ? (
             <Button
               type="button"
+              size="large"
               onClick={(event) => {
                 event.preventDefault();
-                setIsEditing(true);
+                setShowConfirmEdit(true);
               }}
             >
-              ÄNDRA
+              SPARA
             </Button>
           ) : (
-            <>
+            <></>
+          )}
+          {isEditing && showConfirmEdit ? (
+            <div className="flex gap-2">
               <Button
                 type="button"
                 onClick={async () => {
@@ -148,10 +166,30 @@ export default function UserProfile() {
               <Button type="button" onClick={() => window.location.reload()}>
                 AVBRYT
               </Button>
-            </>
+            </div>
+          ) : (
+            <></>
           )}
         </div>
       </form>
+      <div className="flex justify-center mb-20">
+        <Button
+          type="button"
+          size="large"
+          textColor="black"
+          background="transparent"
+          onClick={async () => {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+              console.error("Error signing out");
+            } else {
+              navigate("/"); // Redirect to the home page
+            }
+          }}
+        >
+          Logga ut
+        </Button>
+      </div>
       <Favorites id="favorites" />
       <Footer />
     </div>
