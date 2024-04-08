@@ -36,9 +36,9 @@ export const Card = ({
           </div> */}
         </div>
         <div className="flex justify-between">
-          <p>{positions === "Vet ej" ? "-" : positions + " platser"}</p>
+          <p>{positions} platser</p>
           <span>|</span>
-          <p>{start === "Vet ej" ? "-" : start}</p>
+          <p>{start}</p>
           <span>|</span>
           <p>{roles}</p>
         </div>

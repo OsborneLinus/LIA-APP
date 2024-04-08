@@ -19,15 +19,9 @@ function Form({}) {
   const [attendees, setAttendees] = useState("1-2");
   const [month, setMonth] = useState("Nov 2024");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const positions = ["1-2", "3-4", "5-6", "Vet ej"];
-  const monthOptions = [
-    "Nov 2024",
-    "Dec 2024",
-    "Jan 2025",
-    "Feb 2025",
-    "Vet ej",
-  ];
-  const attendeesOptions = ["1-2", "3-4", "5-6", "Vet ej"];
+  const positions = ["1-2", "3-4", "5-6"];
+  const monthOptions = ["Nov 2024", "Dec 2024", "Jan 2025", "Feb 2025"];
+  const attendeesOptions = ["1-2", "3-4", "5-6"];
 
   const handleRoleChange = (event) => {
     if (event.target.checked) {
