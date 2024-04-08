@@ -24,28 +24,7 @@ export function AppRoutes() {
             <Header />
             <Hero session={session} />
             <What />
-
-            {isLoggedIn ? (
-              <>
-                <div className="ml-6">
-                  <Button
-                    type="button"
-                    size="large"
-                    onClick={async () => {
-                      const { error } = await supabase.auth.signOut();
-                      if (error) console.error("Error signing out");
-                    }}
-                  >
-                    Logga ut
-                  </Button>
-                </div>
-                <CardContainer />
-              </>
-            ) : (
-              <>
-                <Who />
-              </>
-            )}
+            {isLoggedIn ? <CardContainer /> : <Who />}
             <Footer />
           </>
         }

@@ -67,7 +67,7 @@ function Who() {
             Som student kan du skapa ett konto för att kunna se och kontakta
             företagen som kommer vara på plats. Du kan komma utan konto.
           </p>
-          <div className="flex gap-8 my-8 flex-wrap">
+          <div className="flex my-8 flex-wrap">
             <Button type="submit" size="large" onClick={handleCreateAccount}>
               SKAPA KONTO
             </Button>
