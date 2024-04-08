@@ -13,7 +13,7 @@ import Footer from "./Footer";
 import { CardContainer } from "./components/Cards/CardContainer";
 import UserProfile from "./UserProfile";
 
-function AppRoutes() {
+export function AppRoutes() {
   const { session, isLoggedIn } = useContext(SessionContext);
   return (
     <Routes>
