@@ -1,5 +1,5 @@
 // src/App.js or any other component file
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import supabase from "../../services/supabase";
 import { Button } from "../Common/Button";
 import { CheckBoxGrid } from "./CheckBoxGrid";
@@ -19,6 +19,11 @@ function Form({}) {
   const [attendees, setAttendees] = useState("1-2");
   const [month, setMonth] = useState("Nov 2024");
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [nameError, setNameError] = useState(false);
+  const [contactError, setContactError] = useState(false);
+  const [urlError, setUrlError] = useState(false);
+
   const positions = ["1-2", "3-4", "5-6"];
   const monthOptions = ["Nov 2024", "Dec 2024", "Jan 2025", "Feb 2025"];
   const attendeesOptions = ["1-2", "3-4", "5-6"];
@@ -45,11 +50,46 @@ function Form({}) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    let hasErrors = false;
+
+    if (name.trim().length === 0) {
+      console.error("Company Name empty: ", name);
+      setNameError(true);
+      hasErrors = true;
+    }
+
+    const emailRegex =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!emailRegex.test(contact)) {
+      console.error("INVALID EMAIL: ", contact);
+      setContactError(true);
+      console.log(contactError);
+      hasErrors = true;
+    }
+    let finalUrl = url;
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      finalUrl = "https://" + url;
+    }
+
+    try {
+      new URL(finalUrl);
+    } catch (error) {
+      console.error("INVALID URL: ", finalUrl);
+      setUrlError(true);
+      hasErrors = true;
+    }
+
+    if (hasErrors) {
+      return;
+    }
+
+    // Proceed with your Supabase insert operation
     const { error } = await supabase.from("companies").insert([
       {
         name,
         contact,
-        url,
+        url: finalUrl,
         role,
         position,
         tech,
@@ -61,14 +101,22 @@ function Form({}) {
     else console.log("Data inserted successfully");
     setIsSubmitted(true);
   };
+  useEffect(() => {
+    console.log(contactError);
+  }, [contactError]);
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col p-6 gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col p-6 gap-6"
+        noValidate
+      >
         <div className="flex flex-col gap-2">
           <label htmlFor="name-input">FÖRETAG</label>
           <TextInput
             id="name-input"
+            className={nameError ? "border-red-500" : ""}
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -79,7 +127,7 @@ function Form({}) {
           <label htmlFor="contact-input">KONTAKT</label>
           <TextInput
             id="contact-input"
-            className="text-black"
+            className={`text-black ${contactError ? "border-red-500" : ""}`}
             type="email"
             value={contact}
             onChange={(event) => setContact(event.target.value)}
@@ -90,7 +138,7 @@ function Form({}) {
           <label htmlFor="url-input">WEBBSIDA</label>
           <TextInput
             id="url-input"
-            className="text-black"
+            className={`text-black ${urlError ? "border-red-500" : ""}`}
             type="url"
             value={url}
             onChange={(event) => setUrl(event.target.value)}
