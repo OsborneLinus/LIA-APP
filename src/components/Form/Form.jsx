@@ -116,7 +116,9 @@ function Form({}) {
           <label htmlFor="name-input">FÖRETAG</label>
           <TextInput
             id="name-input"
-            className={nameError ? "border-red-500" : ""}
+            className={`text-black ${
+              nameError ? "border border-red-500" : "border-none"
+            } shadow`}
             type="text"
             value={name}
             onChange={(event) => setName(event.target.value)}
@@ -127,7 +129,9 @@ function Form({}) {
           <label htmlFor="contact-input">KONTAKT</label>
           <TextInput
             id="contact-input"
-            className={`text-black ${contactError ? "border-red-500" : ""}`}
+            className={`text-black ${
+              contactError ? "border-red-500" : "border-none"
+            } shadow`}
             type="email"
             value={contact}
             onChange={(event) => setContact(event.target.value)}
@@ -138,7 +142,9 @@ function Form({}) {
           <label htmlFor="url-input">WEBBSIDA</label>
           <TextInput
             id="url-input"
-            className={`text-black ${urlError ? "border-red-500" : ""}`}
+            className={`text-black ${
+              urlError ? "border-red-500" : "border-none "
+            } shadow`}
             type="url"
             value={url}
             onChange={(event) => setUrl(event.target.value)}
