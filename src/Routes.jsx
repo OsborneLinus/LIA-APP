@@ -1,11 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { SignupForm } from "./services/SignUp";
-import supabase from "./services/supabase";
 import Who from "./components/Common/Who";
 import { LoginForm } from "./services/login";
 import { useContext } from "react";
 import { SessionContext } from "./services/SessionContext";
-import { Button } from "./components/Common/Button";
 import Header from "./Header";
 import Hero from "./Hero";
 import What from "./components/Common/What";
