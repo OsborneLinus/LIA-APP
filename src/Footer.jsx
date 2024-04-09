@@ -10,7 +10,7 @@ import { SessionContext } from "./services/SessionContext";
 export default function Footer() {
   const { isLoggedIn } = useContext(SessionContext);
   return (
-    <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center content-center">
+    <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center content-center pt-20">
       <div className="row-span-2 ">
         <a className="px-8 pt-8" href="/">
           <img src={logo} alt="Yrgo logo" onClick={App} />

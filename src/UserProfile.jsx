@@ -10,6 +10,7 @@ import { SessionContext } from "./services/SessionContext";
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import BackArrowButton from "./components/Common/BackArrowButton";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
@@ -70,14 +71,20 @@ export default function UserProfile() {
 
   return (
     <div className="flex flex-col">
+      <div className="w-fit absolute px-5 pt-12">
+        <BackArrowButton onClick={() => navigate(-1)} />
+      </div>
       <Header />
-      <div id="account" className="p-4 text-base font-normal">
+      <div
+        id="account"
+        className="flex flex-col pt-36 px-5 gap-2 text-base font-normal"
+      >
         <h1 className="text-5xl font-bold ">KONTO</h1>
         <p className="inline-flex">
           Här kan du ändra dina kontaktupppgifter och se dina favoriter.
         </p>
       </div>
-      <form className="flex flex-col gap-2 items-center">
+      <form className="flex flex-col gap-2 items-center px-6 pt-6 pb-0">
         <div className="flex flex-col gap-4 p-4">
           {errorMessage && (
             <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
@@ -172,7 +179,7 @@ export default function UserProfile() {
           )}
         </div>
       </form>
-      <div className="flex justify-center mb-20">
+      <div className="flex justify-center mt-0 mb-20">
         <Button
           type="button"
           size="large"
