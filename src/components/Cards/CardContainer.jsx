@@ -76,6 +76,9 @@ export const CardContainer = ({ children }) => {
 
   return (
     <div className="flex flex-col ">
+      <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
+        VILKA KOMMER?
+      </h2>
       <div className="flex justify-end px-6">
         <FilterDropdown
           techFilter={techFilter}

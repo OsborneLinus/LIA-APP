@@ -23,7 +23,7 @@ export function AppRoutes() {
           <>
             <Header />
             <Hero session={session} />
-            <What />
+            <What session={session} />
             {isLoggedIn ? <CardContainer /> : <Who />}
             <Footer />
           </>
