@@ -1,23 +1,39 @@
 import { useState } from "react";
-import { CheckBoxGrid } from "../Form/CheckBoxGrid";
 import { CheckboxInput } from "../Form/CheckboxInput";
 import CheckboxChecked from "../Form/CheckboxChecked";
 import CheckboxUnchecked from "../Form/CheckboxUnchecked";
 
-export const FilterDropdown = () => {
+export const FilterDropdown = ({
+  techFilter,
+  setTechFilter,
+  roleFilter,
+  setRoleFilter,
+}) => {
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleDropdown = () => {
     setShowFilters(!showFilters);
   };
 
-  const handleTechChange = (event) => {
+  const handleRoleFilterChange = (event) => {
     if (event.target.checked) {
-      setTech((prevTech) => [...prevTech, event.target.value]);
+      setRoleFilter([...roleFilter, event.target.value]);
     } else {
-      setTech((prevTech) =>
-        prevTech.filter((value) => value !== event.target.value)
-      );
+      const updatedFilter = roleFilter.filter((checkedFilter) => {
+        return checkedFilter !== event.target.value;
+      });
+      setRoleFilter(updatedFilter);
+    }
+  };
+
+  const handleTechFilterChange = (event) => {
+    if (event.target.checked) {
+      setTechFilter([...techFilter, event.target.value]);
+    } else {
+      const updatedFilter = techFilter.filter((checkedFilter) => {
+        return checkedFilter !== event.target.value;
+      });
+      setTechFilter(updatedFilter);
     }
   };
 
@@ -46,69 +62,99 @@ export const FilterDropdown = () => {
         </button>
       </div>
       {showFilters && (
-        <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
-          <div className="flex gap-2 relative">
-            <CheckboxInput
-              id="frontend-checkbox"
-              value="Frontend"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="frontend-checkbox">Frontend</label>
-            <CheckboxChecked />
-            <CheckboxUnchecked />
+        <div className="flex flex-col flex-wrap gap-4">
+          <div className="flex flex-col gap-4">
+            <p>Inriktning</p>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="webbutveckling-checkbox"
+                  value="WU"
+                  onChange={handleRoleFilterChange}
+                />
+                <label htmlFor="webbtveckling-checkbox">Webbutveckling</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="design-checkbox"
+                  value="DD"
+                  onChange={handleRoleFilterChange}
+                />
+                <label htmlFor="design-checkbox">Digital design</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+            </div>
           </div>
-          <div className="flex gap-2 relative">
-            <CheckboxInput
-              id="ux-checkbox"
-              value="UX"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="ux-checkbox">UX</label>
-            <CheckboxChecked />
-            <CheckboxUnchecked />
-          </div>
-          <div className="flex gap-2 relative">
-            <CheckboxInput
-              id="ui-checkbox"
-              value="UI"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="ui-checkbox">UI</label>
-            <CheckboxChecked />
-            <CheckboxUnchecked />
-          </div>
+          <div className="flex flex-col gap-4">
+            <p>Teknik</p>
+            <div className="flex flex-wrap gap-4">
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="frontend-checkbox"
+                  value="Frontend"
+                  onChange={handleTechFilterChange}
+                />
+                <label htmlFor="frontend-checkbox">Frontend</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="ux-checkbox"
+                  value="UX"
+                  onChange={handleTechFilterChange}
+                />
+                <label htmlFor="ux-checkbox">UX</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="ui-checkbox"
+                  value="UI"
+                  onChange={handleTechFilterChange}
+                />
+                <label htmlFor="ui-checkbox">UI</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
 
-          <div className="flex gap-2 relative">
-            <CheckboxInput
-              id="backend-checkbox"
-              value="Backend"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="backend-checkbox">Backend</label>
-            <CheckboxChecked />
-            <CheckboxUnchecked />
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="backend-checkbox"
+                  value="Backend"
+                  onChange={handleTechFilterChange}
+                />
+                <label htmlFor="backend-checkbox">Backend</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="film-checkbox"
+                  value="Film"
+                  onChange={handleTechFilterChange}
+                />
+                <label htmlFor="film-checkbox">Film</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+              <div className="flex gap-2 relative">
+                <CheckboxInput
+                  id="motion-checkbox"
+                  value="Motion"
+                  onChange={handleTechFilterChange}
+                />{" "}
+                <label htmlFor="motion-checkbox">Motion</label>
+                <CheckboxChecked />
+                <CheckboxUnchecked />
+              </div>
+            </div>
           </div>
-          <div className="flex gap-2 relative">
-            <CheckboxInput
-              id="film-checkbox"
-              value="Film"
-              onChange={handleTechChange}
-            />
-            <label htmlFor="film-checkbox">Film</label>
-            <CheckboxChecked />
-            <CheckboxUnchecked />
-          </div>
-          <div className="flex gap-2 relative">
-            <CheckboxInput
-              id="motion-checkbox"
-              value="Motion"
-              onChange={handleTechChange}
-            />{" "}
-            <label htmlFor="motion-checkbox">Motion</label>
-            <CheckboxChecked />
-            <CheckboxUnchecked />
-          </div>
-        </CheckBoxGrid>
+        </div>
       )}
     </div>
   );

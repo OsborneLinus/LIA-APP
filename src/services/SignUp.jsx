@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { TextInput } from "../components/Form/TextInput";
-import logo from "/assets/YrgoRed.png";
-import App from "../App";
 import { Button } from "../components/Common/Button";
 import supabase from "../services/supabase";
-import CheckedSVG from "../../public/assets/check.svg?react";
+import { useNavigate } from "react-router-dom";
+import { CheckboxInput } from "../components/Form/CheckboxInput";
+import CheckboxChecked from "../components/Form/CheckboxChecked";
+import CheckboxUnchecked from "../components/Form/CheckboxUnchecked";
 
-export const SignupForm = () => {
+export const SignupForm = ({ onClose }) => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -19,85 +21,83 @@ export const SignupForm = () => {
   const handleSignUp = async (event) => {
     event.preventDefault();
     const { error } = await supabase.auth.signUp({ email, password });
-    if (error) console.error("Error signing up:", error.message);
+    if (error) {
+      console.error("Error signing up:", error.message);
+    } else {
+      navigate("/");
+    }
+  };
+
+  const stopPropagation = (event) => {
+    event.stopPropagation();
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="flex flex-col items-end p-8">
-        <a className="" href="/">
-          <img src={logo} alt="Yrgo logo" onClick={App} />
-        </a>
-      </div>
-      <div className="pl-5 pb-12 flex-col justify-start items-start gap-2 inline-flex">
+    <div
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 md:py-10"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white w-screen h-screen md:h-[612px] md:w-[688px] p-6 rounded shadow-md max-w-md mx-auto"
+        onClick={stopPropagation}
+      >
+        <div className="flex justify-end">
+          <button onClick={onClose}>
+            <img src="/assets/YrgoX.svg" alt="" />
+          </button>
+        </div>
         <div className="text-zinc-800 text-5xl font-bold leading-[57px]">
           SKAPA KONTO
         </div>
-        <div className="w-[347px] text-base font-normal leading-snug">
+        <div className="text-base font-normal leading-snug">
           Som student kan du skapa ett konto för att ta del av vilka företag som
           kommer vara på plats under minglet och deras kontaktinformation.{" "}
         </div>
-      </div>
-      <form className="flex flex-col gap-2" onSubmit={handleSignUp}>
-        <div className="flex flex-col gap-4 p-4">
-          <label htmlFor="email">E-POST</label>
-          <TextInput
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="namn@foretag.com"
-          />
-        </div>
-        <div className="flex flex-col gap-4 p-4 pb-12">
-          <label htmlFor="password">LÖSENORD</label>
-          <TextInput
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="******"
-          />
-        </div>
-        <div className="flex items-center gap-2 justify-center">
-          <label htmlFor="policy" className="flex items-center pb-12">
-            <div
-              className={`border-2 ${isChecked ? "" : ""} m-2`}
-              onClick={handleInputChange}
-              style={{ width: "20px", height: "20px", position: "relative" }}
-            >
-              {isChecked && (
-                <CheckedSVG
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    width: "100%",
-                    height: "100%",
-                  }}
-                />
-              )}{" "}
+        <form className="flex flex-col gap-6 py-8" onSubmit={handleSignUp}>
+          <div className="flex flex-col gap-2 px-6 ">
+            <label htmlFor="email">E-POST</label>
+            <TextInput
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="namn@foretag.com"
+            />
+          </div>
+          <div className="flex flex-col gap-2 px-6">
+            <label htmlFor="password">LÖSENORD</label>
+            <TextInput
+              id="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="******"
+            />
+          </div>
+          <div className="flex justify-center mt-2 mb-12">
+            <div className="flex gap-2 relative">
+              <CheckboxInput
+                id="policy-checkbox"
+                value="policy-consent"
+                onChange={handleInputChange}
+                required={true}
+              />{" "}
+              <label htmlFor="policy-checkbox">
+                Jag godkänner
+                <a className="underline pl-1" href="/">
+                  villkoren
+                </a>
+              </label>
+              <CheckboxChecked />
+              <CheckboxUnchecked />
             </div>
-            Jag godkänner{" "}
-            <a className="underline pl-1" href="/">
-              villkoren
-            </a>
-          </label>
-          <input
-            className="sr-only"
-            id="policy"
-            type="checkbox"
-            required
-            checked={isChecked}
-            onChange={handleInputChange}
-          />
-        </div>
+          </div>
 
-        <div className="flex justify-center">
-          <Button type="submit">SKAPA KONTO</Button>
-        </div>
-      </form>
+          <div className="flex justify-center">
+            <Button type="submit">SKAPA KONTO</Button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
