@@ -88,9 +88,9 @@ export const CardContainer = ({ children }) => {
   return (
     <div className="w-full flex justify-center">
       <div className="flex flex-col w-full max-w-[860px]">
-    <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
-        VILKA KOMMER?
-      </h2>
+        <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
+          VILKA KOMMER?
+        </h2>
         <div className="flex justify-end px-6">
           <FilterDropdown
             techFilter={techFilter}
@@ -98,34 +98,34 @@ export const CardContainer = ({ children }) => {
             roleFilter={roleFilter}
             setRoleFilter={setRoleFilter}
           />
-      </div>
-      <div className="flex flex-col p-6 gap-6">
-        {companies.map((company) => {
-          return (
-            <Card
-              key={company.id}
-              companyId={company.id}
-              companyName={company.name}
-              positions={company.position}
-              role={company.role}
-              tech={company.tech}
-              contact={company.contact}
-              start={company.month}
-              url={company.url}
-            />
-          );
-        })}
-      </div>
-      {canFetchMore && (
-        <div className="flex justify-center mt-12">
-          <Button
-            onClick={() => {
-              getCompanies(false, page + 1);
-              setPage(page + 1);
-            }}
-          >
-            LÄS IN FLER
-          </Button>
+        </div>
+        <div className="flex flex-wrap p-6 gap-6">
+          {companies.map((company) => {
+            return (
+              <Card
+                key={company.id}
+                companyId={company.id}
+                companyName={company.name}
+                positions={company.position}
+                role={company.role}
+                tech={company.tech}
+                contact={company.contact}
+                start={company.month}
+                url={company.url}
+              />
+            );
+          })}
+        </div>
+        {canFetchMore && (
+          <div className="flex justify-center mt-12">
+            <Button
+              onClick={() => {
+                getCompanies(false, page + 1);
+                setPage(page + 1);
+              }}
+            >
+              LÄS IN FLER
+            </Button>
           </div>
         )}
       </div>
