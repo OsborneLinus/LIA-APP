@@ -8,7 +8,7 @@ export const TextInput = ({
 }) => {
   return (
     <input
-      className="border-none py-2 px-4 text-black shadow"
+      className="border-none py-2 px-4"
       id={id}
       type={type}
       value={value}
