@@ -25,8 +25,7 @@ export default function Hero({ session }) {
       <b className="font-bold">
         DESIGNERS
         <br />
-        OCH
-        <br />
+        OCH {/* <br /> */}
         UTVECKLARE
       </b>
     </>
