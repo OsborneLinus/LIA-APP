@@ -18,22 +18,13 @@ export const Card = ({
   const { session } = useContext(SessionContext);
   const userId = session ? session.user.id : null;
   return (
-    <div className="flex flex-col p-4 gap-6 bg-white text-black shadow rounded">
+    <div className="flex flex-col w-[390px] p-4 gap-6 bg-white text-black shadow rounded">
       <div className="flex flex-col gap-4">
         <div>
           <div className="flex justify-between">
             <h2 className="text-2xl">{companyName}</h2>
             <FavoriteHeart companyId={companyId} userId={userId} />
           </div>
-          {/* <div>
-            <a
-              href={url}
-              target="_blank"
-              className="text-night-sky-blue hover:underline"
-            >
-              WEBBPLATS
-            </a>
-          </div> */}
         </div>
         <div className="flex justify-between">
           <p>{positions} platser</p>

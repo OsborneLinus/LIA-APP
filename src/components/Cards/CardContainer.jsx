@@ -4,14 +4,25 @@ import { Card } from "./Card";
 import { FilterDropdown } from "./FilterDropdown";
 import { Button } from "../Common/Button";
 
-const ITEM_PER_PAGE = 4;
-
 export const CardContainer = ({ children }) => {
   const [companies, setCompanies] = useState([]);
   const [roleFilter, setRoleFilter] = useState([]);
   const [techFilter, setTechFilter] = useState([]);
   const [page, setPage] = useState(0);
   const [canFetchMore, setCanFetchMore] = useState(true);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  let ITEM_PER_PAGE = 3;
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  if (width > 1024) {
+    ITEM_PER_PAGE = 7;
+  }
 
   // This effect is run when new filter is selected
   useEffect(() => {
@@ -75,44 +86,46 @@ export const CardContainer = ({ children }) => {
   }
 
   return (
-    <div className="flex flex-col ">
-      <div className="flex justify-end px-6">
-        <FilterDropdown
-          techFilter={techFilter}
-          setTechFilter={setTechFilter}
-          roleFilter={roleFilter}
-          setRoleFilter={setRoleFilter}
-        />
-      </div>
-      <div className="flex flex-col p-6 gap-6">
-        {companies.map((company) => {
-          return (
-            <Card
-              key={company.id}
-              companyId={company.id}
-              companyName={company.name}
-              positions={company.position}
-              role={company.role}
-              tech={company.tech}
-              contact={company.contact}
-              start={company.month}
-              url={company.url}
-            />
-          );
-        })}
-      </div>
-      {canFetchMore && (
-        <div className="flex justify-center mt-12">
-          <Button
-            onClick={() => {
-              getCompanies(false, page + 1);
-              setPage(page + 1);
-            }}
-          >
-            LÄS IN FLER
-          </Button>
+    <div className="w-full flex justify-center">
+      <div className="flex flex-col w-full max-w-[860px]">
+        <div className="flex justify-end px-6">
+          <FilterDropdown
+            techFilter={techFilter}
+            setTechFilter={setTechFilter}
+            roleFilter={roleFilter}
+            setRoleFilter={setRoleFilter}
+          />
         </div>
-      )}
+        <div className="flex flex-wrap p-6 gap-6">
+          {companies.map((company) => {
+            return (
+              <Card
+                key={company.id}
+                companyId={company.id}
+                companyName={company.name}
+                positions={company.position}
+                role={company.role}
+                tech={company.tech}
+                contact={company.contact}
+                start={company.month}
+                url={company.url}
+              />
+            );
+          })}
+        </div>
+        {canFetchMore && (
+          <div className="flex justify-center mt-12">
+            <Button
+              onClick={() => {
+                getCompanies(false, page + 1);
+                setPage(page + 1);
+              }}
+            >
+              LÄS IN FLER
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
