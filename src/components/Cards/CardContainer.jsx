@@ -99,7 +99,7 @@ export const CardContainer = ({ children }) => {
             setRoleFilter={setRoleFilter}
           />
         </div>
-        <div className="flex flex-wrap p-6 gap-6">
+        <div className="flex flex-wrap justify-center p-6 gap-6">
           {companies.map((company) => {
             return (
               <Card
