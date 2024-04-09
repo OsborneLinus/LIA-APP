@@ -44,22 +44,30 @@ export default function Favorites({ id }) {
   }, [user]);
   return (
     <>
-      <div id={id} className="p-4 pl-5 pb-12 gap-2 text-base font-normal">
-        <h1 className="text-5xl font-bold ">FAVORITER</h1>
-        <p className="inline-flex">De företag du är intresserad utav </p>
-      </div>
-      <div className="flex flex-col p-6 gap-6">
-        {favorites.map((company) => (
-          <Card
-            key={company.id}
-            companyId={company.id}
-            companyName={company.name}
-            positions={company.position}
-            role={company.role}
-            tech={company.tech}
-            contact={company.contact}
-          />
-        ))}
+      <div className="w-full flex justify-center">
+        <div className="flex flex-col w-full max-w-[860px]">
+          <div id={id} className="flex flex-col px-5 pb-4 gap-2">
+            <h1 className="text-5xl font-bold">FAVORITER</h1>
+            <p>De företag du är intresserad utav </p>
+          </div>
+          <div className="flex flex-wrap p-6 gap-6">
+            {favorites.map((company) => {
+              return (
+                <Card
+                  key={company.id}
+                  companyId={company.id}
+                  companyName={company.name}
+                  positions={company.position}
+                  role={company.role}
+                  tech={company.tech}
+                  contact={company.contact}
+                  start={company.month}
+                  url={company.url}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );
