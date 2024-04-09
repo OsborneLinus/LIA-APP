@@ -10,6 +10,7 @@ import { SessionContext } from "./services/SessionContext";
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import BackArrowButton from "./components/Common/BackArrowButton";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
@@ -70,6 +71,9 @@ export default function UserProfile() {
 
   return (
     <div className="flex flex-col">
+      <div className="w-fit absolute px-5 pt-12">
+        <BackArrowButton onClick={() => navigate(-1)} />
+      </div>
       <Header />
       <div
         id="account"
