@@ -4,14 +4,25 @@ import { Card } from "./Card";
 import { FilterDropdown } from "./FilterDropdown";
 import { Button } from "../Common/Button";
 
-const ITEM_PER_PAGE = 4;
-
 export const CardContainer = ({ children }) => {
   const [companies, setCompanies] = useState([]);
   const [roleFilter, setRoleFilter] = useState([]);
   const [techFilter, setTechFilter] = useState([]);
   const [page, setPage] = useState(0);
   const [canFetchMore, setCanFetchMore] = useState(true);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  let ITEM_PER_PAGE = 3;
+
+  const handleResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  if (width > 1024) {
+    ITEM_PER_PAGE = 7;
+  }
 
   // This effect is run when new filter is selected
   useEffect(() => {
@@ -75,17 +86,18 @@ export const CardContainer = ({ children }) => {
   }
 
   return (
-    <div className="flex flex-col ">
-      <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
+    <div className="w-full flex justify-center">
+      <div className="flex flex-col w-full max-w-[860px]">
+    <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
         VILKA KOMMER?
       </h2>
-      <div className="flex justify-end px-6">
-        <FilterDropdown
-          techFilter={techFilter}
-          setTechFilter={setTechFilter}
-          roleFilter={roleFilter}
-          setRoleFilter={setRoleFilter}
-        />
+        <div className="flex justify-end px-6">
+          <FilterDropdown
+            techFilter={techFilter}
+            setTechFilter={setTechFilter}
+            roleFilter={roleFilter}
+            setRoleFilter={setRoleFilter}
+          />
       </div>
       <div className="flex flex-col p-6 gap-6">
         {companies.map((company) => {
@@ -114,8 +126,9 @@ export const CardContainer = ({ children }) => {
           >
             LÄS IN FLER
           </Button>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
