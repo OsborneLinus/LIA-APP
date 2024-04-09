@@ -64,7 +64,10 @@ function Form({}) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="flex flex-col p-6 gap-6">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col p-6 gap-6 md:w-[612px]"
+      >
         <div className="flex flex-col gap-2">
           <label htmlFor="name-input">FÖRETAG</label>
           <TextInput

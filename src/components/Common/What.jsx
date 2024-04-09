@@ -36,9 +36,9 @@ function What({ session }) {
   const textContent = isLoggedIn ? studentContent : companyContent;
 
   return (
-    <div className="p-6 mt-[2.5rem]">
+    <div className="p-6 mt-[2.5rem] md:w-[612px]">
       <h2 className="text-3xl font-semibold text-yrgo-red mb-6">VAD HÄNDER?</h2>
-      <div className="flex flex-col gap-y-6">{textContent}</div>
+      <div className="flex flex-col gap-y-6 text-lg">{textContent}</div>
     </div>
   );
 }

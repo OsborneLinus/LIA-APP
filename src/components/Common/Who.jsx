@@ -42,7 +42,7 @@ function Who() {
 
   return (
     <>
-      <div ref={whoRef} className="p-6">
+      <div ref={whoRef} className="p-6 md:w-[612px]">
         <h2 className="text-3xl font-semibold text-yrgo-red">VEM ÄR DU?</h2>
         <div className="flex gap-8 my-8 flex-wrap">
           <Button
@@ -63,7 +63,7 @@ function Who() {
           </Button>
         </div>
         <div ref={studentRef} className={isStudent ? "visible" : "hidden"}>
-          <p>
+          <p className="text-lg">
             Som student kan du skapa ett konto för att kunna se och kontakta
             företagen som kommer vara på plats. Du kan komma utan konto.
           </p>
