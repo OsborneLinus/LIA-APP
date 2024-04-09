@@ -109,7 +109,7 @@ function Form({}) {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col p-6 gap-6"
+        className="flex flex-col p-6 gap-6 md:w-[612px]"
         noValidate
       >
         <div className="flex flex-col gap-2">

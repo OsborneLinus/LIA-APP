@@ -23,8 +23,10 @@ export function AppRoutes() {
           <>
             <Header />
             <Hero session={session} />
-            <What session={session} />
-            {isLoggedIn ? <CardContainer /> : <Who />}
+            <div className="md:flex md:flex-col md:items-center">
+              <What session={session} />
+              {isLoggedIn ? <CardContainer /> : <Who />}
+            </div>
             <Footer />
           </>
         }
