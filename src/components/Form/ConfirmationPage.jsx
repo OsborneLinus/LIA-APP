@@ -12,7 +12,7 @@ export default function ConfirmationPage({ setIsSubmitted }) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 md:py-10"
-      onClick={() => setIsSubmitted(false)}
+      onClick={() => setIsSubmitted(closeConfirmation)}
     >
       <div
         className="bg-zinc-100 w-full h-full md:max-w-sm md:max-h-sm shadow-lg relative overflow-auto"
