@@ -78,7 +78,6 @@ export default function Favorites({ id }) {
         <div className="flex flex-col w-full max-w-[860px]">
           <div id={id} className="flex flex-col px-5 pb-4 gap-2">
             <h1 className="text-5xl font-bold">FAVORITER</h1>
-            <p>De företag du är intresserad utav </p>
           </div>
           <div className="flex flex-wrap p-6 gap-6">
             {favorites.map((company) => {
