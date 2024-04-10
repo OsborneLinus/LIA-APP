@@ -70,132 +70,141 @@ export default function UserProfile() {
   }, [hash]);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full">
       <div className="w-fit absolute px-5 pt-12">
         <BackArrowButton onClick={() => navigate(-1)} />
       </div>
       <Header />
-      <div
-        id="account"
-        className="flex flex-col pt-36 px-5 gap-2 text-base font-normal"
-      >
-        <h1 className="text-5xl font-bold ">KONTO</h1>
-        <p className="inline-flex">
-          Här kan du ändra dina kontaktupppgifter och se dina favoriter.
-        </p>
-      </div>
-      <form className="flex flex-col gap-2 items-center px-6 pt-6 pb-0">
-        <div className="flex flex-col gap-4 p-4">
-          {errorMessage && (
-            <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
-              {errorMessage}
+      <div className="flex flex-col w-full items-center">
+        <div
+          id="account"
+          className="flex flex-col justify-center pt-36 px-5 gap-8 md:w-[860px]"
+        >
+          <div className="flex flex-col gap-2">
+            <h1 className="text-5xl font-bold ">KONTO</h1>
+            <p>
+              Här kan du ändra dina kontaktupppgifter och se dina favoriter.
             </p>
-          )}
-          <Button
-            type="button"
-            size="large"
-            onClick={() => {
-              setShowEmailInput(!showEmailInput);
-              setIsEditing(!showEmailInput);
-              setShowPasswordInput(false);
-            }}
-          >
-            ÄNDRA E-POSTADRESS
-          </Button>
-          {showEmailInput && (
-            <div className="flex flex-col">
-              <label htmlFor="email">E-POST</label>
-              <TextInput
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-                placeholder="namn@foretag.com"
-              />
-            </div>
-          )}
-        </div>
-        <div className="flex flex-col gap-4 p-4">
-          <Button
-            type="button"
-            size="large"
-            onClick={() => {
-              setShowPasswordInput(!showPasswordInput);
-              setIsEditing(!showPasswordInput);
-              setShowEmailInput(false);
-            }}
-          >
-            ÄNDRA LÖSENORD
-          </Button>
-          {showPasswordInput && (
-            <div className="flex flex-col">
-              <label htmlFor="password">LÖSENORD</label>
-              <TextInput
-                id="password"
-                type="password"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-                placeholder="******"
-              />
-            </div>
-          )}
-        </div>
-        <div className="flex justify-center mb-4">
-          {isEditing && !showConfirmEdit ? (
-            <Button
-              type="button"
-              size="large"
-              onClick={(event) => {
-                event.preventDefault();
-                setShowConfirmEdit(true);
-              }}
-            >
-              SPARA
-            </Button>
-          ) : (
-            <></>
-          )}
-          {isEditing && showConfirmEdit ? (
-            <div className="flex gap-2">
+          </div>
+          <div className="flex flex-col items-center justify-between md:flex-row">
+            <form className="flex flex-col md:flex-row gap-2 items-center justify-center h-fit pb-0">
+              <div className="flex flex-col gap-4 py-4">
+                {errorMessage && (
+                  <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
+                    {errorMessage}
+                  </p>
+                )}
+                <Button
+                  type="button"
+                  size="large"
+                  onClick={() => {
+                    setShowEmailInput(!showEmailInput);
+                    setIsEditing(!showEmailInput);
+                    setShowPasswordInput(false);
+                  }}
+                >
+                  ÄNDRA E-POSTADRESS
+                </Button>
+                {showEmailInput && (
+                  <div className="flex flex-col">
+                    <label htmlFor="email">E-POST</label>
+                    <TextInput
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                      placeholder="namn@foretag.com"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="flex flex-col gap-4 p-4">
+                <Button
+                  type="button"
+                  size="large"
+                  onClick={() => {
+                    setShowPasswordInput(!showPasswordInput);
+                    setIsEditing(!showPasswordInput);
+                    setShowEmailInput(false);
+                  }}
+                >
+                  ÄNDRA LÖSENORD
+                </Button>
+                {showPasswordInput && (
+                  <div className="flex flex-col">
+                    <label htmlFor="password">LÖSENORD</label>
+                    <TextInput
+                      id="password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
+                      placeholder="******"
+                    />
+                  </div>
+                )}
+              </div>
+              <div className="flex justify-center mb-4">
+                {isEditing && !showConfirmEdit ? (
+                  <Button
+                    type="button"
+                    size="large"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      setShowConfirmEdit(true);
+                    }}
+                  >
+                    SPARA
+                  </Button>
+                ) : (
+                  <></>
+                )}
+                {isEditing && showConfirmEdit ? (
+                  <div className="flex gap-2">
+                    <Button
+                      type="button"
+                      onClick={async () => {
+                        await handleUpdateEmail();
+                        await handleUpdatePassword();
+                      }}
+                    >
+                      BEKRÄFTA
+                    </Button>
+                    <Button
+                      type="button"
+                      onClick={() => window.location.reload()}
+                    >
+                      AVBRYT
+                    </Button>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </form>
+            <div className="flex justify-center items-center">
               <Button
                 type="button"
+                size="large"
+                textColor="black"
+                background="transparent"
                 onClick={async () => {
-                  await handleUpdateEmail();
-                  await handleUpdatePassword();
+                  const { error } = await supabase.auth.signOut();
+                  if (error) {
+                    console.error("Error signing out");
+                  } else {
+                    navigate("/"); // Redirect to the home page
+                  }
                 }}
               >
-                BEKRÄFTA
-              </Button>
-              <Button type="button" onClick={() => window.location.reload()}>
-                AVBRYT
+                Logga ut
               </Button>
             </div>
-          ) : (
-            <></>
-          )}
+          </div>
         </div>
-      </form>
-      <div className="flex justify-center mt-0 mb-20">
-        <Button
-          type="button"
-          size="large"
-          textColor="black"
-          background="transparent"
-          onClick={async () => {
-            const { error } = await supabase.auth.signOut();
-            if (error) {
-              console.error("Error signing out");
-            } else {
-              navigate("/"); // Redirect to the home page
-            }
-          }}
-        >
-          Logga ut
-        </Button>
       </div>
       <Favorites id="favorites" />
       <Footer />
