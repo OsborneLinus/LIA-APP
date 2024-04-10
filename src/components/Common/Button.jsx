@@ -10,8 +10,8 @@ export const Button = ({
 }) => {
   const sizeClassNames =
     size === "small"
-      ? "text-base font-normal px-2 py-1"
-      : "text-base font-normal px-4 py-2 md:py-4 md:px-16" +
+      ? "font-normal px-2 py-1"
+      : "font-normal px-4 py-2 md:py-4 md:px-16" +
         (fillWidth ? " w-custom md:w-[282px]" : "");
   const backgroundColor =
     background === undefined ? "night-sky-blue" : background;
