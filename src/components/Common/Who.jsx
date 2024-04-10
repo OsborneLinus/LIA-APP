@@ -52,14 +52,15 @@ function Who() {
 
   return (
     <>
-      <div ref={whoRef} className="p-6 md:w-[612px]">
+      <div ref={whoRef} className="p-5 md:w-[612px] md:px-0">
         <h2 className="text-3xl font-semibold text-yrgo-red">VEM ÄR DU?</h2>
-        <div className="flex gap-8 my-8 flex-wrap">
+        <div className="flex my-8 flex-wrap justify-between md:gap-x-12">
           <Button
             type="button"
             size="large"
             onClick={handleCompany}
             background={isStudent ? "asphalt-grey" : undefined}
+            fillWidth={true}
           >
             FÖRETAG
           </Button>
@@ -68,6 +69,7 @@ function Who() {
             size="large"
             onClick={handleStudent}
             background={isCompany ? "asphalt-grey" : undefined}
+            fillWidth={true}
           >
             STUDENT
           </Button>
@@ -77,8 +79,13 @@ function Who() {
             Som student kan du skapa ett konto för att kunna se och kontakta
             företagen som kommer vara på plats. Du kan komma utan konto.
           </p>
-          <div className="flex my-8 flex-wrap">
-            <Button type="submit" size="large" onClick={handleCreateAccount}>
+          <div className="flex my-8 flex-wrap justify-between md:gap-x-12">
+            <Button
+              type="submit"
+              size="large"
+              onClick={handleCreateAccount}
+              fillWidth={true}
+            >
               SKAPA KONTO
             </Button>
             {showSignup && <SignupForm onClose={closeCreateAccount} />}
@@ -87,6 +94,7 @@ function Who() {
               size="large"
               background="transparent"
               textColor="black"
+              fillWidth={true}
               onClick={handleLogin}
             >
               LOGGA IN
