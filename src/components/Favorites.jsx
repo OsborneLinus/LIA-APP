@@ -44,7 +44,7 @@ export default function Favorites({ id }) {
   }, [user]);
   return (
     <>
-      <div className="w-full flex justify-center">
+      <div className="w-full flex justify-center mt-20">
         <div className="flex flex-col w-full max-w-[860px]">
           <div id={id} className="flex flex-col px-5 pb-4 gap-2">
             <h1 className="text-5xl font-bold">FAVORITER</h1>
