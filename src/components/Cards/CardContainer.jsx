@@ -4,6 +4,18 @@ import { Card } from "./Card";
 import { FilterDropdown } from "./FilterDropdown";
 import { Button } from "../Common/Button";
 
+export const getFromAndTo = (page, itemsPerPage) => {
+  let from = page * itemsPerPage;
+  let to = from + itemsPerPage;
+
+  // Offsetting so we don't get last card again
+  if (page > 0) {
+    from += 1;
+  }
+
+  return { from, to };
+};
+
 export const CardContainer = ({ children }) => {
   const [companies, setCompanies] = useState([]);
   const [roleFilter, setRoleFilter] = useState([]);
@@ -31,25 +43,13 @@ export const CardContainer = ({ children }) => {
     getCompanies(true, 0);
   }, [roleFilter, techFilter]);
 
-  const getFromAndTo = (page) => {
-    let from = page * ITEM_PER_PAGE;
-    let to = from + ITEM_PER_PAGE;
-
-    // Offsetting so we don't get last card again
-    if (page > 0) {
-      from += 1;
-    }
-
-    return { from, to };
-  };
-
   async function getCompanies(newFiltering, page) {
     // Show the fetch more button again when new filters applies
     if (newFiltering) {
       setCanFetchMore(true);
     }
 
-    const { from, to } = getFromAndTo(page);
+    const { from, to } = getFromAndTo(page, ITEM_PER_PAGE);
 
     let query = supabase
       .from("companies")
