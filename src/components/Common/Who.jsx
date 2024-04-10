@@ -57,19 +57,17 @@ function Who() {
         <div className="flex my-8 flex-wrap justify-between md:gap-x-12">
           <Button
             type="button"
-            size="large"
+            size="who"
             onClick={handleCompany}
             background={isStudent ? "asphalt-grey" : undefined}
-            fillWidth={true}
           >
             FÖRETAG
           </Button>
           <Button
             type="button"
-            size="large"
+            size="who"
             onClick={handleStudent}
             background={isCompany ? "asphalt-grey" : undefined}
-            fillWidth={true}
           >
             STUDENT
           </Button>
@@ -80,21 +78,15 @@ function Who() {
             företagen som kommer vara på plats. Du kan komma utan konto.
           </p>
           <div className="flex my-8 flex-wrap justify-between md:gap-x-12">
-            <Button
-              type="submit"
-              size="large"
-              onClick={handleCreateAccount}
-              fillWidth={true}
-            >
+            <Button type="submit" size="who" onClick={handleCreateAccount}>
               SKAPA KONTO
             </Button>
             {showSignup && <SignupForm onClose={closeCreateAccount} />}
             <Button
               type="button"
-              size="large"
+              size="who"
               background="transparent"
               textColor="black"
-              fillWidth={true}
               onClick={handleLogin}
             >
               LOGGA IN

@@ -96,7 +96,7 @@ export default function UserProfile() {
                 )}
                 <Button
                   type="button"
-                  size="large"
+                  size="account"
                   onClick={() => {
                     setShowEmailInput(!showEmailInput);
                     setIsEditing(!showEmailInput);
@@ -123,7 +123,7 @@ export default function UserProfile() {
               <div className="flex flex-col gap-4 p-4">
                 <Button
                   type="button"
-                  size="large"
+                  size="account"
                   onClick={() => {
                     setShowPasswordInput(!showPasswordInput);
                     setIsEditing(!showPasswordInput);
@@ -151,7 +151,7 @@ export default function UserProfile() {
                 {isEditing && !showConfirmEdit ? (
                   <Button
                     type="button"
-                    size="large"
+                    size="small"
                     onClick={(event) => {
                       event.preventDefault();
                       setShowConfirmEdit(true);
@@ -166,6 +166,7 @@ export default function UserProfile() {
                   <div className="flex gap-2">
                     <Button
                       type="button"
+                      size="small"
                       onClick={async () => {
                         await handleUpdateEmail();
                         await handleUpdatePassword();
@@ -175,6 +176,7 @@ export default function UserProfile() {
                     </Button>
                     <Button
                       type="button"
+                      size="small"
                       onClick={() => window.location.reload()}
                     >
                       AVBRYT
@@ -188,7 +190,7 @@ export default function UserProfile() {
             <div className="flex justify-center items-center">
               <Button
                 type="button"
-                size="large"
+                size="account"
                 textColor="black"
                 background="transparent"
                 onClick={async () => {
@@ -200,7 +202,7 @@ export default function UserProfile() {
                   }
                 }}
               >
-                Logga ut
+                LOGGA UT
               </Button>
             </div>
           </div>

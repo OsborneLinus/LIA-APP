@@ -1,4 +1,5 @@
 import AnimationHeartSkull from "../Animations/AnimationHeartSkull";
+import { Button } from "../Common/Button";
 
 export default function ConfirmationPage({ setIsSubmitted }) {
   const stopPropagation = (event) => {
@@ -61,14 +62,14 @@ export default function ConfirmationPage({ setIsSubmitted }) {
 
         <div className="flex flex-grow justify-center items-center">
           <div className="py-10">
-            <button className="bg-night-sky-blue text-white text-xl py-2 px-4">
+            <Button size="large" type="button" onClick={closeConfirmation}>
               <a
                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20240325T091500Z%2F20240325T094500Z"
                 title="Save Event in my Calendar"
               >
                 LÄGG TILL I KALENDER
               </a>
-            </button>
+            </Button>
           </div>
         </div>
       </div>
