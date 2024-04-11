@@ -39,10 +39,10 @@ export const FilterDropdown = ({
 
   return (
     <div>
-      <div className="flex justify-end">
+      <div className="flex justify-start">
         <button
           onClick={toggleDropdown}
-          className="inline-flex items-center px-4 py-2 text-center"
+          className="inline-flex items-center py-2 text-center"
         >
           Filtrera{" "}
           <svg
