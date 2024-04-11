@@ -88,10 +88,10 @@ export const CardContainer = ({ children }) => {
   return (
     <div className="w-full flex justify-center">
       <div className="flex flex-col w-full max-w-[860px]">
-        <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
+        <h2 className="px-6 md:px-0 mt-14 text-3xl font-semibold text-yrgo-red">
           VILKA KOMMER?
         </h2>
-        <div className="flex justify-end px-6">
+        <div className="flex justify-start px-6 pt-6 md:px-0">
           <FilterDropdown
             techFilter={techFilter}
             setTechFilter={setTechFilter}
@@ -99,7 +99,7 @@ export const CardContainer = ({ children }) => {
             setRoleFilter={setRoleFilter}
           />
         </div>
-        <div className="flex flex-wrap justify-center p-6 gap-6">
+        <div className="flex flex-wrap justify-center md:justify-between p-6 md:px-0 gap-6">
           {companies.map((company) => {
             return (
               <Card
