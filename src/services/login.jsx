@@ -51,6 +51,7 @@ export const LoginForm = ({ onClose }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="namn@foretag.com"
+              className="bg-zinc-100 border-none shadow"
             />
           </div>
           <div className="flex flex-col gap-4 px-6 pb-8">
@@ -61,6 +62,7 @@ export const LoginForm = ({ onClose }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="******"
+              className="bg-zinc-100 border-none shadow"
             />
           </div>
           <div className="flex justify-center">
