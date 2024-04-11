@@ -27,6 +27,17 @@ function Form({}) {
   const positions = ["1-2", "3-4", "5-6"];
   const monthOptions = ["Nov 2024", "Dec 2024", "Jan 2025", "Feb 2025"];
   const attendeesOptions = ["1-2", "3-4", "5-6"];
+  const techStack = [
+    { name: "Frontend" },
+    { name: "Backend" },
+    { name: "React" },
+    { name: "Laravel" },
+    { name: "C#" },
+    { name: "UX" },
+    { name: "UI" },
+    { name: "Motion" },
+    { name: "Film" },
+  ];
 
   const handleRoleChange = (event) => {
     if (event.target.checked) {
@@ -101,9 +112,7 @@ function Form({}) {
     else console.log("Data inserted successfully");
     setIsSubmitted(true);
   };
-  useEffect(() => {
-    console.log(contactError);
-  }, [contactError]);
+  useEffect(() => {}, [contactError]);
 
   return (
     <div>
@@ -244,67 +253,20 @@ function Form({}) {
         <div className="flex flex-col gap-2">
           <span>VI JOBBAR MED</span>
           <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="frontend-checkbox"
-                value="Frontend"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="frontend-checkbox">Frontend</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="ux-checkbox"
-                value="UX"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="ux-checkbox">UX</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="ui-checkbox"
-                value="UI"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="ui-checkbox">UI</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="backend-checkbox"
-                value="Backend"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="backend-checkbox">Backend</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="film-checkbox"
-                value="Film"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="film-checkbox">Film</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="motion-checkbox"
-                value="Motion"
-                onChange={handleTechChange}
-              />{" "}
-              <label htmlFor="motion-checkbox">Motion</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
+            {techStack.map((tech) => {
+              return (
+                <div key={tech.name} className="flex gap-2 relative">
+                  <CheckboxInput
+                    id={`${tech.name}-checkbox`}
+                    value={tech.name}
+                    onChange={handleTechChange}
+                  />
+                  <label htmlFor={`${tech.name}-checkbox`}>{tech.name}</label>
+                  <CheckboxChecked />
+                  <CheckboxUnchecked />
+                </div>
+              );
+            })}
           </CheckBoxGrid>
         </div>
         <div className="flex justify-end">
