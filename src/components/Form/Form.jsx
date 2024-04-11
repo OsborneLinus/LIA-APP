@@ -112,9 +112,7 @@ function Form({}) {
     else console.log("Data inserted successfully");
     setIsSubmitted(true);
   };
-  useEffect(() => {
-    console.log(contactError);
-  }, [contactError]);
+  useEffect(() => {}, [contactError]);
 
   return (
     <div>
