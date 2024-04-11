@@ -87,7 +87,7 @@ export default function UserProfile() {
             </p>
           </div>
           <div className="flex flex-col items-center justify-between md:flex-row">
-            <form className="flex flex-col md:flex-row gap-2 items-center justify-center h-fit pb-0">
+            <form className="flex flex-col md:flex-row gap-2 items-center justify-center h-fit pb-0 md:gap-12">
               <div className="flex flex-col gap-4 py-4">
                 {errorMessage && (
                   <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
