@@ -37,7 +37,7 @@ const SaveConfirm = ({
   };
 
   return (
-    <div className="flex justify-center mb-4">
+    <div className="flex justify-start mb-4">
       {isEditing && !showConfirmEdit ? (
         <Button
           type="button"
