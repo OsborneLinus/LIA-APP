@@ -9,6 +9,17 @@ export const FilterDropdown = ({
   roleFilter,
   setRoleFilter,
 }) => {
+  const techStack = [
+    { name: "Frontend" },
+    { name: "Backend" },
+    { name: "React" },
+    { name: "Laravel" },
+    { name: "C#" },
+    { name: "UX" },
+    { name: "UI" },
+    { name: "Motion" },
+    { name: "Film" },
+  ];
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleDropdown = () => {
@@ -91,7 +102,21 @@ export const FilterDropdown = ({
           <div className="flex flex-col gap-4">
             <p>Teknik</p>
             <div className="flex flex-wrap gap-4">
-              <div className="flex gap-2 relative">
+              {techStack.map((tech) => {
+                return (
+                  <div key={tech.name} className="flex gap-2 relative">
+                    <CheckboxInput
+                      id={`${tech.name}-checkbox`}
+                      value={tech.name}
+                      onChange={handleTechFilterChange}
+                    />
+                    <label htmlFor={`${tech.name}-checkbox`}>{tech.name}</label>
+                    <CheckboxChecked />
+                    <CheckboxUnchecked />
+                  </div>
+                );
+              })}
+              {/* <div className="flex gap-2 relative">
                 <CheckboxInput
                   id="frontend-checkbox"
                   value="Frontend"
@@ -151,7 +176,7 @@ export const FilterDropdown = ({
                 <label htmlFor="motion-checkbox">Motion</label>
                 <CheckboxChecked />
                 <CheckboxUnchecked />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
