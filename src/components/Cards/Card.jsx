@@ -1,5 +1,4 @@
 import FavoriteHeart from "../../../public/assets/FavoriteHeart";
-import { Button } from "../Common/Button";
 import { SessionContext } from "../../services/SessionContext";
 import { useContext } from "react";
 import CopyEmailButton from "./CopyEmailButton";
@@ -22,7 +21,16 @@ export const Card = ({
       <div className="flex flex-col gap-4">
         <div>
           <div className="flex justify-between">
-            <h2 className="text-2xl">{companyName}</h2>
+            <h2 className="text-2xl">
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {companyName}
+              </a>
+            </h2>
             <FavoriteHeart companyId={companyId} userId={userId} />
           </div>
         </div>

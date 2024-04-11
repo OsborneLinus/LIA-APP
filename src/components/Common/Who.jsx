@@ -1,13 +1,11 @@
 import { SignupForm } from "../../services/SignUp";
 import { Button } from "./Button";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Form from "../Form/Form";
 import { useRef } from "react";
 import { LoginForm } from "../../services/login";
 
 function Who() {
-  const navigate = useNavigate();
   const [isCompany, setIsCompany] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
