@@ -10,15 +10,15 @@ import { SessionContext } from "./services/SessionContext";
 export default function Footer() {
   const { isLoggedIn } = useContext(SessionContext);
   return (
-    <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center content-center pt-20">
-      <div className="row-span-2 ">
+    <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center content-center pt-20 md:grid-cols-6">
+      <div className="row-span-2 md:col-span-2">
         <a className="px-8 pt-8" href="/">
           <img src={logo} alt="Yrgo logo" onClick={App} />
         </a>
       </div>
       {isLoggedIn && (
         <>
-          <div className="col-start-2 row-start-1 pt-4">
+          <div className="col-start-2 row-start-1 pt-4 md:col-start-4 md:row-span-2 ">
             <div className="inline-flex">
               <FavoriteHeart />
               <Link
@@ -33,7 +33,7 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-          <div className="col-start-3 row-start-1 pt-4">
+          <div className="col-start-3 row-start-1 pt-4 md:col-start-3 md:row-span-2 md:row-start-auto">
             <div className="inline-flex">
               <AccountLogo />
               <Link
@@ -51,11 +51,11 @@ export default function Footer() {
         </>
       )}
 
-      <div className="col-start-3 row-start-2 inline-flex">
+      <div className="col-start-3 row-start-2 inline-flex md:col-start-5 md:row-span-2">
         <p>KONTAKT</p>
         <RightArrow />
       </div>
-      <div className="col-start-2 row-start-2">
+      <div className="col-start-2 row-start-2 md:col-start-6 md:row-span-2">
         <p>YRGO 2024</p>
       </div>
     </div>
