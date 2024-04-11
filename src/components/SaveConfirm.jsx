@@ -58,7 +58,6 @@ const SaveConfirm = ({
             type="button"
             size="small"
             onClick={async () => {
-              console.log("email", email);
               await handleUpdateEmail();
               await handleUpdatePassword();
             }}
