@@ -78,7 +78,7 @@ export default function UserProfile() {
       <div className="flex flex-col w-full items-center">
         <div
           id="account"
-          className="flex flex-col justify-center pt-36 px-5 gap-8 md:w-[860px]"
+          className="flex flex-col justify-center pt-36 px-5 gap-8 md:px-0 md:w-[860px]"
         >
           <div className="flex flex-col gap-2">
             <h1 className="text-5xl font-bold ">KONTO</h1>
@@ -120,7 +120,7 @@ export default function UserProfile() {
                   </div>
                 )}
               </div>
-              <div className="flex flex-col gap-4 p-4">
+              <div className="flex flex-col gap-4 py-4">
                 <Button
                   type="button"
                   size="account"
