@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import BackArrowButton from "./components/Common/BackArrowButton";
+import SaveConfirm from "./components/SaveConfirm";
 
 export default function UserProfile() {
   const [email, setEmail] = useState("");
@@ -28,31 +29,6 @@ export default function UserProfile() {
     setIsDisabled(email === user && !password);
   }, [email, password, user]);
 
-  const handleUpdateEmail = async () => {
-    if (email && email !== user) {
-      const { data, error } = await supabase.auth.updateUser({ email });
-      if (error) {
-        setErrorMessage(error.message);
-      } else {
-        console.log("User updated: ", data);
-        setErrorMessage("");
-        window.location.reload();
-      }
-    }
-  };
-
-  const handleUpdatePassword = async () => {
-    if (password) {
-      const { data, error } = await supabase.auth.updateUser({ password });
-      if (error) {
-        setErrorMessage(error.message);
-      } else {
-        console.log("Password updated: ", data);
-        setErrorMessage("");
-        window.location.reload();
-      }
-    }
-  };
   const location = useLocation();
   const hash = location.hash;
 
@@ -86,14 +62,14 @@ export default function UserProfile() {
               Här kan du ändra dina kontaktupppgifter och se dina favoriter.
             </p>
           </div>
+          {errorMessage && (
+            <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
+              {errorMessage}
+            </p>
+          )}
           <div className="flex flex-col items-center justify-between md:flex-row">
-            <form className="flex flex-col md:flex-row gap-2 items-center justify-center h-fit pb-0">
+            <form className="flex flex-col md:flex-row gap-2 items-center md:items-start justify-center h-fit pb-0 md:gap-12">
               <div className="flex flex-col gap-4 py-4">
-                {errorMessage && (
-                  <p className="text-red-600 font-bold border border-red-600 p-6 rounded-md ">
-                    {errorMessage}
-                  </p>
-                )}
                 <Button
                   type="button"
                   size="account"
@@ -106,18 +82,29 @@ export default function UserProfile() {
                   ÄNDRA E-POSTADRESS
                 </Button>
                 {showEmailInput && (
-                  <div className="flex flex-col">
-                    <label htmlFor="email">E-POST</label>
-                    <TextInput
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                      }}
-                      placeholder="namn@foretag.com"
+                  <>
+                    <div className="flex flex-col">
+                      <label htmlFor="email">E-POST</label>
+                      <TextInput
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                        placeholder="namn@foretag.com"
+                      />
+                    </div>
+                    <SaveConfirm
+                      user={user}
+                      password={password}
+                      email={email}
+                      isEditing={isEditing}
+                      showConfirmEdit={showConfirmEdit}
+                      setShowConfirmEdit={setShowConfirmEdit}
+                      setErrorMessage={setErrorMessage}
                     />
-                  </div>
+                  </>
                 )}
               </div>
               <div className="flex flex-col gap-4 py-4">
@@ -133,61 +120,33 @@ export default function UserProfile() {
                   ÄNDRA LÖSENORD
                 </Button>
                 {showPasswordInput && (
-                  <div className="flex flex-col">
-                    <label htmlFor="password">LÖSENORD</label>
-                    <TextInput
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
-                      placeholder="******"
+                  <>
+                    <div className="flex flex-col">
+                      <label htmlFor="password">LÖSENORD</label>
+                      <TextInput
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => {
+                          setPassword(e.target.value);
+                        }}
+                        placeholder="******"
+                      />
+                    </div>
+                    <SaveConfirm
+                      user={user}
+                      password={password}
+                      email={email}
+                      isEditing={isEditing}
+                      showConfirmEdit={showConfirmEdit}
+                      setShowConfirmEdit={setShowConfirmEdit}
+                      setErrorMessage={setErrorMessage}
                     />
-                  </div>
-                )}
-              </div>
-              <div className="flex justify-center mb-4">
-                {isEditing && !showConfirmEdit ? (
-                  <Button
-                    type="button"
-                    size="small"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      setShowConfirmEdit(true);
-                    }}
-                  >
-                    SPARA
-                  </Button>
-                ) : (
-                  <></>
-                )}
-                {isEditing && showConfirmEdit ? (
-                  <div className="flex gap-2">
-                    <Button
-                      type="button"
-                      size="small"
-                      onClick={async () => {
-                        await handleUpdateEmail();
-                        await handleUpdatePassword();
-                      }}
-                    >
-                      BEKRÄFTA
-                    </Button>
-                    <Button
-                      type="button"
-                      size="small"
-                      onClick={() => window.location.reload()}
-                    >
-                      AVBRYT
-                    </Button>
-                  </div>
-                ) : (
-                  <></>
+                  </>
                 )}
               </div>
             </form>
-            <div className="flex justify-center items-center">
+            <div className="flex justify-start item-center md:items-start">
               <Button
                 type="button"
                 size="account"
