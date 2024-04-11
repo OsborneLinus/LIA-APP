@@ -14,7 +14,7 @@ export const FilterDropdown = ({
     { name: "Backend" },
     { name: "React" },
     { name: "Laravel" },
-    { name: "C#" },
+    { name: ".NET" },
     { name: "UX" },
     { name: "UI" },
     { name: "Motion" },
