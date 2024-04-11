@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import YrgoArrowButton from "./components/Common/YrgoArrowButton.jsx";
 import SaveTheDate from "./components/SaveTheDate.jsx";
+import DecryptHeroText from "./components/Animations/DecryptText.jsx";
 
 export default function Hero({ session }) {
   const isLoggedIn = session && session.user !== null;
@@ -23,10 +24,8 @@ export default function Hero({ session }) {
       DIGITALA
       <br />
       <b className="font-bold">
-        DESIGNERS
-        <br />
-        OCH {/* <br /> */}
-        UTVECKLARE
+        <DecryptHeroText text="DESIGNERS" />
+        <br /> OCH <DecryptHeroText text="UTVECKLARE" />
       </b>
     </>
   );
