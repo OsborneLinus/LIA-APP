@@ -4,6 +4,18 @@ import { Card } from "./Card";
 import { FilterDropdown } from "./FilterDropdown";
 import { Button } from "../Common/Button";
 
+export const getFromAndTo = (page, itemsPerPage) => {
+  let from = page * itemsPerPage;
+  let to = from + itemsPerPage;
+
+  // Offsetting so we don't get last card again
+  if (page > 0) {
+    from += 1;
+  }
+
+  return { from, to };
+};
+
 export const CardContainer = ({ children }) => {
   const [companies, setCompanies] = useState([]);
   const [roleFilter, setRoleFilter] = useState([]);
@@ -31,25 +43,13 @@ export const CardContainer = ({ children }) => {
     getCompanies(true, 0);
   }, [roleFilter, techFilter]);
 
-  const getFromAndTo = (page) => {
-    let from = page * ITEM_PER_PAGE;
-    let to = from + ITEM_PER_PAGE;
-
-    // Offsetting so we don't get last card again
-    if (page > 0) {
-      from += 1;
-    }
-
-    return { from, to };
-  };
-
   async function getCompanies(newFiltering, page) {
     // Show the fetch more button again when new filters applies
     if (newFiltering) {
       setCanFetchMore(true);
     }
 
-    const { from, to } = getFromAndTo(page);
+    const { from, to } = getFromAndTo(page, ITEM_PER_PAGE);
 
     let query = supabase
       .from("companies")
@@ -88,10 +88,10 @@ export const CardContainer = ({ children }) => {
   return (
     <div className="w-full flex justify-center">
       <div className="flex flex-col w-full max-w-[860px]">
-        <h2 className="px-6 mt-14 text-3xl font-semibold text-yrgo-red">
+        <h2 className="px-6 md:px-0 mt-14 text-3xl font-semibold text-yrgo-red">
           VILKA KOMMER?
         </h2>
-        <div className="flex justify-end px-6">
+        <div className="flex justify-start px-6 pt-6 md:px-0">
           <FilterDropdown
             techFilter={techFilter}
             setTechFilter={setTechFilter}
@@ -99,7 +99,7 @@ export const CardContainer = ({ children }) => {
             setRoleFilter={setRoleFilter}
           />
         </div>
-        <div className="flex flex-wrap p-6 gap-6">
+        <div className="flex flex-wrap justify-center md:justify-between p-6 md:px-0 gap-6">
           {companies.map((company) => {
             return (
               <Card

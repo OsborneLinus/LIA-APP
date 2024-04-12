@@ -27,6 +27,17 @@ function Form({}) {
   const positions = ["1-2", "3-4", "5-6"];
   const monthOptions = ["Nov 2024", "Dec 2024", "Jan 2025", "Feb 2025"];
   const attendeesOptions = ["1-2", "3-4", "5-6"];
+  const techStack = [
+    { name: "Frontend" },
+    { name: "Backend" },
+    { name: "React" },
+    { name: "Laravel" },
+    { name: ".NET" },
+    { name: "UX" },
+    { name: "UI" },
+    { name: "Motion" },
+    { name: "Film" },
+  ];
 
   const handleRoleChange = (event) => {
     if (event.target.checked) {
@@ -67,15 +78,31 @@ function Form({}) {
       console.log(contactError);
       hasErrors = true;
     }
-    let finalUrl = url;
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      finalUrl = "https://" + url;
-    }
 
-    try {
-      new URL(finalUrl);
-    } catch (error) {
-      console.error("INVALID URL: ", finalUrl);
+    const validateUrl = (value) => {
+      const regexp =
+        /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
+
+      let finalUrl = value;
+      if (!value.startsWith("http://") && !value.startsWith("https://")) {
+        finalUrl = "https://" + value;
+      }
+
+      if (!regexp.test(finalUrl)) {
+        return false;
+      }
+
+      try {
+        new URL(finalUrl);
+      } catch (error) {
+        console.error("INVALID URL: ", finalUrl);
+        return false;
+      }
+
+      return true;
+    };
+
+    if (!validateUrl(url)) {
       setUrlError(true);
       hasErrors = true;
     }
@@ -101,15 +128,13 @@ function Form({}) {
     else console.log("Data inserted successfully");
     setIsSubmitted(true);
   };
-  useEffect(() => {
-    console.log(contactError);
-  }, [contactError]);
+  useEffect(() => {}, [contactError]);
 
   return (
     <div>
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col p-6 gap-6 md:w-[612px]"
+        className="flex flex-col p-6 gap-6 md:px-0 md:w-[612px]"
         noValidate
       >
         <div className="flex flex-col gap-2">
@@ -244,67 +269,20 @@ function Form({}) {
         <div className="flex flex-col gap-2">
           <span>VI JOBBAR MED</span>
           <CheckBoxGrid rows="grid-rows-2" cols="grid-cols-3" gap="gap-4">
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="frontend-checkbox"
-                value="Frontend"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="frontend-checkbox">Frontend</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="ux-checkbox"
-                value="UX"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="ux-checkbox">UX</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="ui-checkbox"
-                value="UI"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="ui-checkbox">UI</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="backend-checkbox"
-                value="Backend"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="backend-checkbox">Backend</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="film-checkbox"
-                value="Film"
-                onChange={handleTechChange}
-              />
-              <label htmlFor="film-checkbox">Film</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
-            <div className="flex gap-2 relative">
-              <CheckboxInput
-                id="motion-checkbox"
-                value="Motion"
-                onChange={handleTechChange}
-              />{" "}
-              <label htmlFor="motion-checkbox">Motion</label>
-              <CheckboxChecked />
-              <CheckboxUnchecked />
-            </div>
+            {techStack.map((tech) => {
+              return (
+                <div key={tech.name} className="flex gap-2 relative">
+                  <CheckboxInput
+                    id={`${tech.name}-checkbox`}
+                    value={tech.name}
+                    onChange={handleTechChange}
+                  />
+                  <label htmlFor={`${tech.name}-checkbox`}>{tech.name}</label>
+                  <CheckboxChecked />
+                  <CheckboxUnchecked />
+                </div>
+              );
+            })}
           </CheckBoxGrid>
         </div>
         <div className="flex justify-end">

@@ -1,13 +1,11 @@
 import { SignupForm } from "../../services/SignUp";
 import { Button } from "./Button";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Form from "../Form/Form";
 import { useRef } from "react";
 import { LoginForm } from "../../services/login";
 
 function Who() {
-  const navigate = useNavigate();
   const [isCompany, setIsCompany] = useState(false);
   const [isStudent, setIsStudent] = useState(false);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
@@ -52,12 +50,12 @@ function Who() {
 
   return (
     <>
-      <div ref={whoRef} className="p-6 md:w-[612px]">
+      <div ref={whoRef} className="p-5 md:w-[612px] md:px-0">
         <h2 className="text-3xl font-semibold text-yrgo-red">VEM ÄR DU?</h2>
-        <div className="flex gap-8 my-8 flex-wrap">
+        <div className="flex my-8 flex-wrap justify-between md:gap-x-12">
           <Button
             type="button"
-            size="large"
+            size="who"
             onClick={handleCompany}
             background={isStudent ? "asphalt-grey" : undefined}
           >
@@ -65,7 +63,7 @@ function Who() {
           </Button>
           <Button
             type="button"
-            size="large"
+            size="who"
             onClick={handleStudent}
             background={isCompany ? "asphalt-grey" : undefined}
           >
@@ -77,14 +75,14 @@ function Who() {
             Som student kan du skapa ett konto för att kunna se och kontakta
             företagen som kommer vara på plats. Du kan komma utan konto.
           </p>
-          <div className="flex my-8 flex-wrap">
-            <Button type="submit" size="large" onClick={handleCreateAccount}>
+          <div className="flex my-8 flex-wrap justify-between md:gap-x-12">
+            <Button type="submit" size="who" onClick={handleCreateAccount}>
               SKAPA KONTO
             </Button>
             {showSignup && <SignupForm onClose={closeCreateAccount} />}
             <Button
               type="button"
-              size="large"
+              size="who"
               background="transparent"
               textColor="black"
               onClick={handleLogin}

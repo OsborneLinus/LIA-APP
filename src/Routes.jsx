@@ -10,6 +10,7 @@ import What from "./components/Common/What";
 import Footer from "./Footer";
 import { CardContainer } from "./components/Cards/CardContainer";
 import UserProfile from "./UserProfile";
+import DecryptText from "./components/Animations/DecryptText";
 
 export function AppRoutes() {
   const { session, isLoggedIn } = useContext(SessionContext);
@@ -25,6 +26,7 @@ export function AppRoutes() {
               <What session={session} />
               {isLoggedIn ? <CardContainer /> : <Who />}
             </div>
+            <DecryptText />
             <Footer />
           </>
         }

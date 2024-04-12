@@ -41,10 +41,6 @@ export const LoginForm = ({ onClose }) => {
         </div>
         <div className=" text-base font-normal ">
           <h1 className="text-5xl font-bold pb-4">LOGGA IN</h1>
-          <p className="inline-flex pr-1">Har du inte ett konto?</p>
-          <button className="underline " onClick={onClose}>
-            Skapa ett!
-          </button>
         </div>
         <form className="flex flex-col gap-6" onSubmit={handleLogin}>
           <div className="flex flex-col gap-2 px-6 py-8">
@@ -55,6 +51,7 @@ export const LoginForm = ({ onClose }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="namn@foretag.com"
+              className="bg-zinc-100 border-none shadow"
             />
           </div>
           <div className="flex flex-col gap-4 px-6 pb-8">
@@ -65,6 +62,7 @@ export const LoginForm = ({ onClose }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="******"
+              className="bg-zinc-100 border-none shadow"
             />
           </div>
           <div className="flex justify-center">

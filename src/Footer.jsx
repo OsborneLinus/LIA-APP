@@ -10,7 +10,7 @@ import { SessionContext } from "./services/SessionContext";
 export default function Footer() {
   const { isLoggedIn } = useContext(SessionContext);
   return (
-    <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center content-center pt-20">
+    <div className="grid grid-cols-3 grid-rows-2 items-center justify-items-center pt-20 lg:grid-cols-6 lg:px-36">
       <div className="row-span-2 ">
         <a className="px-8 pt-8" href="/">
           <img src={logo} alt="Yrgo logo" onClick={App} />
@@ -18,22 +18,7 @@ export default function Footer() {
       </div>
       {isLoggedIn && (
         <>
-          <div className="col-start-2 row-start-1 pt-4">
-            <div className="inline-flex">
-              <FavoriteHeart />
-              <Link
-                className="ml-2"
-                to={{
-                  pathname: "/userprofile",
-                  hash: "favorites",
-                  state: { targetId: "favorites" },
-                }}
-              >
-                Favoriter
-              </Link>
-            </div>
-          </div>
-          <div className="col-start-3 row-start-1 pt-4">
+          <div className="col-start-3 row-start-1 pt-4 row-span-1 lg:col-start-3 lg:row-span-2">
             <div className="inline-flex">
               <AccountLogo />
               <Link
@@ -48,14 +33,29 @@ export default function Footer() {
               </Link>
             </div>
           </div>
+          <div className="col-start-2 row-start-1 pt-4 row-span-1 lg:col-start-4 lg:row-span-2 ">
+            <div className="inline-flex">
+              <FavoriteHeart />
+              <Link
+                className="ml-2"
+                to={{
+                  pathname: "/userprofile",
+                  hash: "favorites",
+                  state: { targetId: "favorites" },
+                }}
+              >
+                Favoriter
+              </Link>
+            </div>
+          </div>
         </>
       )}
 
-      <div className="col-start-3 row-start-2 inline-flex">
+      <div className="col-start-3 row-start-2 inline-flex row-span-1 lg:col-start-5 lg:row-span-2 lg:pt-4">
         <p>KONTAKT</p>
         <RightArrow />
       </div>
-      <div className="col-start-2 row-start-2">
+      <div className="col-start-2 row-start-2 row-span-1 lg:col-start-6 lg:row-span-2 lg:pt-4">
         <p>YRGO 2024</p>
       </div>
     </div>

@@ -7,7 +7,15 @@ export const Button = ({
   onClick,
   isDisabled,
 }) => {
-  const sizeClassNames = size === "small" ? "px-2 py-1" : "text-2xl px-4 py-2";
+  const sizeClassNames =
+    size === "small"
+      ? "font-normal px-2 py-1"
+      : size === "who"
+      ? "font-normal px-4 py-2 md:px-16 md:py-4 w-custom md:w-[282px]"
+      : size === "account"
+      ? "font-normal px-4 py-2 md:px-8 md:py-4 md:w-[254px]"
+      : "font-normal px-4 py-2 md:px-16 md:py-4";
+
   const backgroundColor =
     background === undefined ? "night-sky-blue" : background;
   const text = textColor === undefined ? "text-white" : "text-black";
@@ -17,7 +25,7 @@ export const Button = ({
       type={type}
       className={`${
         isDisabled ? "bg-gray-500" : `bg-${backgroundColor}`
-      } ${text} rounded flex justify-center items-center w-fit ${sizeClassNames}`}
+      } ${text} rounded flex justify-center items-center ${sizeClassNames}`}
       onClick={onClick}
       disabled={isDisabled}
     >
