@@ -78,15 +78,31 @@ function Form({}) {
       console.log(contactError);
       hasErrors = true;
     }
-    let finalUrl = url;
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      finalUrl = "https://" + url;
-    }
 
-    try {
-      new URL(finalUrl);
-    } catch (error) {
-      console.error("INVALID URL: ", finalUrl);
+    const validateUrl = (value) => {
+      const regexp =
+        /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
+
+      let finalUrl = value;
+      if (!value.startsWith("http://") && !value.startsWith("https://")) {
+        finalUrl = "https://" + value;
+      }
+
+      if (!regexp.test(finalUrl)) {
+        return false;
+      }
+
+      try {
+        new URL(finalUrl);
+      } catch (error) {
+        console.error("INVALID URL: ", finalUrl);
+        return false;
+      }
+
+      return true;
+    };
+
+    if (!validateUrl(url)) {
       setUrlError(true);
       hasErrors = true;
     }
