@@ -79,11 +79,12 @@ function Form({}) {
       hasErrors = true;
     }
 
+    let finalUrl;
     const validateUrl = (value) => {
+      finalUrl = value;
       const regexp =
         /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
 
-      let finalUrl = value;
       if (!value.startsWith("http://") && !value.startsWith("https://")) {
         finalUrl = "https://" + value;
       }
