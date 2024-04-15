@@ -34,9 +34,10 @@ function What({ session }) {
   );
 
   const textContent = isLoggedIn ? studentContent : companyContent;
+  const containerWidth = isLoggedIn ? "[860px]" : "[612px]";
 
   return (
-    <div className="md:w-[860px] flex justify-start">
+    <div className={`flex md:w-${containerWidth} justify-start`}>
       <div className="p-5 mt-[2.5rem] md:w-[612px] md:px-0">
         <h2 className="text-3xl font-semibold text-yrgo-red mb-6">
           VAD HÄNDER?
