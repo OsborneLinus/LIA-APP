@@ -30,9 +30,6 @@ function Form({}) {
   const techStack = [
     { name: "Frontend" },
     { name: "Backend" },
-    { name: "React" },
-    { name: "Laravel" },
-    { name: ".NET" },
     { name: "UX" },
     { name: "UI" },
     { name: "Motion" },
