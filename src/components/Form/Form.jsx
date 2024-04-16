@@ -30,9 +30,6 @@ function Form({}) {
   const techStack = [
     { name: "Frontend" },
     { name: "Backend" },
-    { name: "React" },
-    { name: "Laravel" },
-    { name: ".NET" },
     { name: "UX" },
     { name: "UI" },
     { name: "Motion" },
@@ -79,11 +76,12 @@ function Form({}) {
       hasErrors = true;
     }
 
+    let finalUrl;
     const validateUrl = (value) => {
+      finalUrl = value;
       const regexp =
         /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-z0-9-]+(?:\.[a-z0-9-]+)+[^\s]*$/i;
 
-      let finalUrl = value;
       if (!value.startsWith("http://") && !value.startsWith("https://")) {
         finalUrl = "https://" + value;
       }
