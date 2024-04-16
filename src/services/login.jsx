@@ -72,7 +72,9 @@ export const LoginForm = ({ onClose }) => {
         <div className="flex items-center justify-center flex-grow py-12">
           <div className="w-56 text-center flex flex-col">
             <a
-              href="/"
+              href="/pdfs/Our-Company-Privacy-Policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-black text-base font-light leading-relaxed"
             >
               <span className="underline">Läs mer</span> om hur vi hanterar dina

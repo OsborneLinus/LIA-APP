@@ -86,8 +86,14 @@ export const SignupForm = ({ onClose }) => {
               />{" "}
               <label htmlFor="policy-checkbox">
                 Jag godkänner
-                <a className="underline pl-1" href="/">
-                  villkoren
+                <a
+                  href="/pdfs/Our-Company-Privacy-Policy.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-black text-base font-light leading-relaxed"
+                >
+                  {" "}
+                  <span className="underline">villkoren</span>
                 </a>
               </label>
               <CheckboxChecked />
